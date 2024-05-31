@@ -1,0 +1,98 @@
+@import "~bootstrap/dist/css/bootstrap.min.css";
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap');
+
+$border-dark: black;
+$red-background:rgba(255, 0, 0, 0.571);
+$light-green:#01a76a;
+$yellow-background:ffd23d;
+$gray-background:#9ea5a9;
+$white-background: white;
+$red-color:#f5554b;
+
+*{
+  font-size: medium;
+  font-weight: 4  00;
+}
+
+a {
+  text-decoration: none !important;
+}
+
+
+.aprtTwoItem {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.listItemCustomPadding {
+  padding: 0.5rem 0rem !important;
+}
+.dangerColor {
+  background-color: $red-color;
+}
+
+.lightGreenBackground {
+  background-color: $light-green !important;
+  color: $white-background !important;
+  font-weight: 600;
+  font-size: large;
+}
+.yellowBackground {
+  background-color: $yellow-background !important;
+  color: $border-dark !important;
+  font-weight: 600;
+  font-size: large;
+}
+.grayBackground {
+  background-color: $gray-background !important;
+  color: $white-background !important;
+  font-weight: 600;
+  font-size: large;
+}
+.redBackground {
+  background-color: $red-background !important;
+  color: $border-dark !important;
+  font-weight: 600;
+  font-size: large;
+}
+
+.text-center{
+  cursor: pointer;
+}
+.red{
+  color: red;
+}
+.green{
+  color: $light-green;
+}
+.yellow{
+  color: yellow;
+}
+.gray{
+  color: gray;
+}
+
+
+a[target="_blank"]::after {
+  content: none !important;
+  background-image: none !important;
+  display: none !important;
+}
+a:not(.u-unstyledLink):not(.wnd-Link--external) {
+  -webkit-appearance: initial !important;
+  -moz-appearance: initial !important;
+  appearance: initial !important;
+  background: initial !important;
+  border: initial !important;
+  color: initial !important;
+  cursor: pointer !important;
+}
+
+.smaller-font{
+  font-size: 0.9rem !important; 
+  font-weight: 600 !important;
+  line-height: 1.2 !important; 
+  font-family: "DM Sans", sans-serif !important; 
+  -webkit-font-smoothing: antialiased !important; 
+  -moz-osx-font-smoothing: grayscale !important; 
+}

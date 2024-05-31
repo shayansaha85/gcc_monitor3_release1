@@ -1,0 +1,30 @@
+{
+  "private": true,
+  "name": "nerdpacktutorial",
+  "version": "0.1.0",
+  "scripts": {
+    "start": "nr1 nerdpack:serve",
+    "test": "exit 0"
+  },
+  "nr1": {
+    "uuid": "087d2a69-2e39-4544-a86d-eee575dc1d24"
+  },
+  "dependencies": {
+    "@fortawesome/fontawesome-svg-core": "^6.5.1",
+    "@fortawesome/free-solid-svg-icons": "^6.5.1",
+    "@fortawesome/react-fontawesome": "^0.2.0",
+    "bootstrap": "^4.6.2",
+    "prop-types": "15.7.2",
+    "react": "17.0.2",
+    "react-bootstrap": "^1.6.6",
+    "react-dom": "17.0.2"
+  },
+  "browserslist": [
+    "last 2 versions",
+    "not ie < 11",
+    "not dead"
+  ],
+  "devDependencies": {
+    "json-loader": "^0.5.7"
+  }
+}

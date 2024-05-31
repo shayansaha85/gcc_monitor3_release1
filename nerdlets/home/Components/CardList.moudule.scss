@@ -1,0 +1,33 @@
+.borderOutline {
+    /* border: 1px solid red; */
+  }
+  .aprtTwoItem {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .listItemCustomPadding {
+    padding: 0.4rem 0rem !important;
+  }
+  .dangerColor {
+    background-color: red;
+  }
+  
+  .lightGreenBackground {
+    background-color: lightgreen !important;
+    color: white !important;
+    font-weight: 600;
+    font-size: large;
+  }
+  .yellowBackground {
+    background-color: rgba(255, 255, 0, 0.489) !important;
+    color: black !important;
+    font-weight: 600;
+    font-size: large;
+  }
+
+*{
+  background-color: red;
+  background: blue;
+ }
+  
