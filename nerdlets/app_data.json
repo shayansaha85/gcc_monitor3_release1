@@ -10,7 +10,7 @@
     },
     "metric2": {
       "accountId": "2781667",
-      "name": "Response Time (s)",
+      "name": "Response Time (sec)",
       "query": "SELECT average(duration) from Transaction where appName IN ('210135-Partner Ready Portal (PRP)-Production', '212948-Next Generation Quoter-PRD', '213051-Next Gen Quote-To-Order Conversion Engine-PRD') and (request.uri like '%/web/prp' and request.headers.host = 'partner.hpe.com') OR (request.uri like '/' and request.headers.host = 'partner.hpe.com') OR (request.uri like '%/group/prp/esm') OR (request.uri like '%/group/prp/esm/-/link/189005' or request.uri LIKE '/group/prp/esm/-/link/179401' or request.uri LIKE '/group/prp/esm/-/link/179301') OR (request.uri like '%/q2cwngq/selfservice/getEmptyQuote%') OR (request.uri = '/group/prp/tools-catalog') OR (request.uri LIKE '%opty/Lookup%' or request.uri LIKE '%ngqaction/updateQuote%' or request.uri LIKE '%qids/saveNewQuoteToQids%' or request.uri LIKE '%ngqaction/autoSave%' or request.uri LIKE '%ocaConfig/getBomByUcid%' or request.uri LIKE '%itemDetail/getNewItemDetail%') OR (request.uri LIKE '%ngqpricing/toleranceLevel%' or request.uri like '%ngqpricing/preCompleteCheck%' or request.uri like '%ngq/bundleCheck%' or request.uri like '%ngq/submitToClic%' or request.uri like '%prevalidation/dataCheck%' or request.uri like '%createDealWin%' or request.uri like '%ngqpricing/getDealRegBenefits%' or request.uri like '%refreshOptimusWithSH%') OR (request.uri LIKE '%fannr/getFanFromClic' or request.uri LIKE '%FanNrCheckRestEndPoint/submitToClic' or request.uri LIKE '%prevalidation/applyRulesForCreateNew' or request.uri LIKE '%emdm/search' or request.uri LIKE '%emdm/getlocation' or request.uri LIKE '%emdm/lookup' or request.uri LIKE '%emdm/getPartyAllocatedData' or request.uri LIKE '%EMDMServiceRestEndPoint/getEMDMPartySearchService' or request.uri LIKE '%EMDMServiceRestEndPoint/getMDMLocationAndCreateService' or request.uri LIKE '%EMDMServiceRestEndPoint/getEMDMPartyLookupService' or request.uri LIKE '%prevalidation/applyRulesForCreateNew' or request.uri LIKE '%quotationDetails' or request.uri LIKE '%quotationchange/clone' or request.uri LIKE '%prevalidation/applyNewQuote' or request.uri LIKE '%QuotationDetailChangeRestEndpoint/saveQuote1' or request.uri LIKE '%PreValidationRestEndpoint/applyNewQuote' or request.uri LIKE '%prevalidation/applyRulesForCreateNew' or request.uri LIKE '%applyNewQuote' or request.uri LIKE '%/applyNewQuote' or request.uri LIKE '%prevalidation/applyRulesForCreateNew' or request.uri LIKE '%frictionless/getcustpref' or request.uri LIKE '%ConvertToOrderServiceRestEndPoint/convertToOrderJSON' or request.uri LIKE '%ws/cto/convert' or request.uri LIKE '%prevalidation/applyRules' or request.uri LIKE '%prevalidation/getEntryRule' or request.uri LIKE '%quotationDetails' or request.uri LIKE '%ws/cto/convert' or request.uri LIKE '%PreValidationRestEndpoint/getEntryRule' or request.uri LIKE '%PreValidationRestEndpoint/applyRules' or request.uri LIKE '%ConvertToOrderServiceRestEndPoint/convertToOrderJSON' or request.uri LIKE '%ws/cto/isCTOEnable' or request.uri LIKE '%pgs/request' or request.uri LIKE '%pgs/activetokens' or request.uri LIKE '%pgs/updatetoken')",
       "critical_val": 5,
       "warning_val": 3,
@@ -34,7 +34,7 @@
     },
     "metric5": {
       "accountId": "2781667",
-      "name": "Login (s)",
+      "name": "Login (sec)",
       "query": "from Transaction select average(duration) where appName IN ('210135-Partner Ready Portal (PRP)-Production') and (request.uri like '%/web/prp' and request.headers.host = 'partner.hpe.com')",
       "critical_val": 5,
       "warning_val": 3,
@@ -42,7 +42,7 @@
     },
     "metric6": {
       "accountId": "2781667",
-      "name": "Save Quotes to QIDS (s)",
+      "name": "Save Quotes to QIDS (sec)",
       "query": "from Transaction select average(duration) where appName IN ('212948-Next Generation Quoter-PRD') and request.uri LIKE '%qids/saveNewQuoteToQids%'",
       "critical_val": 5,
       "warning_val": 3,
@@ -50,7 +50,7 @@
     },
     "metric7": {
       "accountId": "2781667",
-      "name": "Refresh Pricing (s)",
+      "name": "Refresh Pricing (sec)",
       "query": "from Transaction select average(duration) where appName IN ('212948-Next Generation Quoter-PRD') and request.uri like '%refreshOptimusWithSH%'",
       "critical_val": 5,
       "warning_val": 3,
@@ -84,7 +84,7 @@
     },
     "metric2": {
       "accountId": "2781667",
-      "name": "Response Time (s)",
+      "name": "Response Time (sec)",
       "query": "from Transaction select average(duration) where appName IN ('210135-Partner Ready Portal (PRP)-Production','211240-ADDISON-Production-order-services') and (request.uri LIKE '%get-data-set') OR (request.uri LIKE '%/get-osvpop-data') OR (request.uri LIKE '%get-reports%')",
       "critical_val": 5,
       "warning_val": 3,
@@ -108,7 +108,7 @@
     },
     "metric5": {
       "accountId": "2781667",
-      "name": "Login (s)",
+      "name": "Login (sec)",
       "query": "FROM Transaction SELECT average(duration) WHERE appName IN ('210135-Partner Ready Portal (PRP)-Production','211240-ADDISON-Production-order-services') AND (request.uri LIKE '%/login' OR request.uri LIKE '%/group/prp' OR request.uri LIKE '%/group/prp/home%')",
       "critical_val": 5,
       "warning_val": 3,
@@ -116,7 +116,7 @@
     },
     "metric6": {
       "accountId": "2781667",
-      "name": "Landing Page (s)",
+      "name": "Landing Page (sec)",
       "query": "FROM Transaction SELECT average(duration) WHERE appName IN ('210135-Partner Ready Portal (PRP)-Production','211240-ADDISON-Production-order-services') AND  request.uri LIKE '%get-data-set'",
       "critical_val": 5,
       "warning_val": 3,
@@ -124,7 +124,7 @@
     },
     "metric7": {
       "accountId": "2781667",
-      "name": "Order Details (s)",
+      "name": "Order Details (sec)",
       "query": "from Transaction select average(duration) where appName in ('210135-Partner Ready Portal (PRP)-Production','211240-ADDISON-Production-order-services') and request.uri like'%/get-osvpop-data'",
       "critical_val": 5,
       "warning_val": 3,
@@ -158,7 +158,7 @@
     },
     "metric2": {
       "accountId": "2781667",
-      "name": "Response Time (s)",
+      "name": "Response Time (sec)",
       "query": "SELECT average(duration) from Transaction where appName IN ('211460-Next Generation eCommerce COLO-Production','213197-MyNetWorkingPortal-PRD','213051-Order Capture Layer-PRD','213049-CORONA-PRD','213032-Internet Pricing and Configurator Service-PRD-OCC','213032-Internet Pricing and Configurator Service-PRD-OCC','211240-ADDISON-Production-pricing','211240-ADDISON-Production-inventory','213503-Global Tax Engine-Integration','211240-ADDISON-Production-inventory', '213503-Global Tax Engine-Integration','211240-ADDISON-Production-inventory', '211240-ADDISON-Production-service-delivery','213032-Internet Pricing and Configurator Service-PRD-OCC','211240-ADDISON-Production', '213032-Internet Pricing and Configurator Service-PRD-OCC','211240-ADDISON-Production-pricing', '211240-ADDISON-Production-inventory' ,'211240-ADDISON-Production-service-delivery','211289-emdm-production','211240-ADDISON-Production','213051-Order Capture Layer-PRD','210135-Partner Ready Portal (PRP)-Production') and (request.uri like '%/shop/login/login'or request.uri like '%/shop/loginPageSession' or request.uri like '%/shop/loginValidation%'or request.uri like '%/shop/rememberMe%' or request.uri like '%/shop/login') OR (request.uri like '%/my-account' ) or (request.uri like '%/punchout/login%' )or (request.uri like '%/punchout/receiveeprimecart') or (request.uri like '%/hpeStandardsList') or (request.uri like '%/my-account/favorites/getFavoritesList') or (request.uri like '%/my-account/hpeQuotesList') or (request.uri like '%/quoteServices/readquote/jsonService' )or (request.uri like '%/my-account/getPROrders') or (request.uri like '%/my-account/getcategories') or (request.uri like '%/my-account/getOrders') or (request.uri like '%/cart/configure') or (request.uri like '%/SignonService%') or (request.uri like '%/HybrisIntegrationLogin') or (request.uri like '%/cart/add') or (request.uri like '%/api/search/supplier-plant') or  (request.uri like '%/ipc-ws/ConfigurationService') or (request.uri like '%/simulations/offer-prices%') or (request.uri like '%/api/search/sku-info') or (request.uri like '%/gateway/sabrix/services/taxcalculationservice/2011-09-01/taxcalculationservice') or (request.uri like '%/createInitiateQuote') or (request.uri like '%/createQuoteView') or (request.uri like '%/ipc-ws/ConfigurationService') or (request.uri like '%/simulations/offer-prices') or (request.uri like '%/api/search/sku-info') or (request.uri like '%/taxcalculationservice') or (request.uri like '%/api/search/supplier-plant') or (request.uri like '%/api/simulate-sales-orders') or (request.uri like '%/createQuoteSummary' ) or (request.uri like '%/api/contacts') or (request.uri like '%/api/quote/opportunity-id') or (request.uri like '%/quoteConfirmSummary') or (request.uri like '%/ipc-ws/ConfigurationService') or (request.uri like '%/createCheckoutView') or (request.uri like '%/ocl-ui/punchout/receiveeprimecart') or (request.uri like '%/ipc-ws/ConfigurationService') or (request.uri like '%/simulations/offer-prices') or (request.uri like '%/api/search/sku-info' ) or (request.uri like '%/api/search/supplier-plant') or (request.uri like '%/gateway/sabrix/services/taxcalculationservice/2011-09-01/taxcalculationservice') or (request.uri like '%/api/simulate-sales-orders') or (request.uri like '%/checkout/checkoutPlaceOrderSummary') or (request.uri like '%/api/getlocation') or (request.uri like '%/api/contacts') or (request.uri like '%/api/v2/search/orders') or (request.uri like  '%/checkout/orderConfirmation/%') or (request.uri like '%/cart/add-to-requistion%') or (request.uri like '%/ocl-ui/punchout/receiveeprimecart') or (request.uri like '%/widget/group/customer/osvwidget/-/OrderStatusView%')",
       "critical_val": 5,
       "warning_val": 3,
@@ -182,7 +182,7 @@
     },
     "metric5": {
       "accountId": "2781667",
-      "name": "Login (s)",
+      "name": "Login (sec)",
       "query": "FROM Transaction SELECT average(duration) WHERE appName IN ('210135-Partner Ready Portal (PRP)-Production','213049-CORONA-PRD','211240-ADDISON-Production-pricing','211240-ADDISON-Production-service-delivery','211240-ADDISON-Production','211460-Next Generation eCommerce COLO-Production','213051-Order Capture Layer-PRD','213032-Internet Pricing and Configurator Service-PRD-OCC','211240-ADDISON-Production-inventory','213503-Global Tax Engine-Integration','211289-emdm-production','212922-NSA - Geolocation Service HPE-PRD')  AND request.uri IN ('/shop/login/login','/Geolocator-Service/GeoLocatorService','/shop/loginPageSession','/shop/loginValidation','/shop/rememberMe','/shop/login')",
       "critical_val": 5,
       "warning_val": 3,
@@ -190,7 +190,7 @@
     },
     "metric6": {
       "accountId": "2781667",
-      "name": "Add to cart (s)",
+      "name": "Add to cart (sec)",
       "query": "FROM Transaction SELECT average(duration) WHERE appName IN ('210135-Partner Ready Portal (PRP)-Production','213049-CORONA-PRD','211240-ADDISON-Production-pricing','211240-ADDISON-Production-service-delivery','211240-ADDISON-Production','211460-Next Generation eCommerce COLO-Production','213051-Order Capture Layer-PRD','213032-Internet Pricing and Configurator Service-PRD-OCC','211240-ADDISON-Production-inventory','213503-Global Tax Engine-Integration','211289-emdm-production','212922-NSA - Geolocation Service HPE-PRD')  AND request.uri IN ('/cart/add','/api/search/supplier-plant','/ipc-ws/ConfigurationService','/simulations/offer-prices','/api/search/sku-info','/gateway/sabrix/services/taxcalculationservice/2011-09-01/taxcalculationservice')",
       "critical_val": 5,
       "warning_val": 3,
@@ -198,7 +198,7 @@
     },
     "metric7": {
       "accountId": "2781667",
-      "name": "Create PO (s)",
+      "name": "Create PO (sec)",
       "query": "FROM Transaction SELECT average(duration) WHERE appName IN ('210135-Partner Ready Portal (PRP)-Production','213049-CORONA-PRD','211240-ADDISON-Production-pricing','211240-ADDISON-Production-service-delivery','211240-ADDISON-Production','211460-Next Generation eCommerce COLO-Production','213051-Order Capture Layer-PRD','213032-Internet Pricing and Configurator Service-PRD-OCC','211240-ADDISON-Production-inventory','213503-Global Tax Engine-Integration','211289-emdm-production','212922-NSA - Geolocation Service HPE-PRD')  AND request.uri IN ('/createCheckoutView','/ocl-ui/punchout/receiveeprimecart','/ipc-ws/ConfigurationService','/simulations/offer-prices/api/search/sku-info','/api/search/supplier-plant','/gateway/sabrix/services/taxcalculationservice/2011-09-01/taxcalculationservice','/api/simulate-sales-orders')",
       "critical_val": 5,
       "warning_val": 3,
@@ -232,7 +232,7 @@
     },
     "metric2": {
       "accountId": "2781667",
-      "name": "Response Time (s)",
+      "name": "Response Time (sec)",
       "query": "SELECT average(duration) from Transaction where appName IN('211460-Next Generation eCommerce COLO-Production','212922-NSA - Geolocation Service HPE-PRD','214498-Mkt Product recommendation Engine-PRD','213741-Address Service-PRD', '211289-emdm-production','211607-MDCP Contact-PRD') and (request.uri like '%/oktaSessionsMeResponse%') or (request.uri like '%/oktaAuthenticateEndpoint%')  or (request.uri like '%/login') or (request.uri like '%/Geolocator-Service/GeoLocatorService') or  (request.uri like '%/oktaInvalidateUserSession%') or (request.uri like '%/my-account') or (request.uri like '%/profile/UserProfile%') or (request.uri like '%/servers-systems') or (request.uri like'%/networking') or  (request.uri like'%/storage') or  (request.uri like '%/software') or (request.uri like '%/options') or (request.uri like'%/services') or (request.uri like '%/financial-services') or (request.uri like '%/manufacturing') or (request.uri like '%/public-sector') or (request.uri like '%/use-cases/containers') or (request.uri like '%/use-cases/data-protection') or (request.uri like '%/use-cases/database') or (request.uri like '%/software/high-performance-computing-software') or (request.uri like '%/enterprise-solutions/converged-systems/') or (request.uri like '%/virtualization-software/vmware-virtualization-software') or (request.uri like '%/virtualization-software/nonstop-software%') or (request.uri like '%/Virtual-machines') or (request.uri like '/%containers') or (request.uri like '%/machine-learning') or (request.uri like '%/storage') or (request.uri like '%/Compute') or (request.uri like '%/data-protection')  or (request.uri like '%/sku/list%') or (request.uri like '%/storage') or (request.uri like '%/networking') or (request.uri like '%/software') or (request.uri like '%/options') or (request.uri like '%/services') or (request.uri like '%/smb-offers/c/c001002') or (request.uri like '%/getSolutionAndFlexData%') or (request.uri like '%/hpeProductCarouse%') or (request.uri like '%/p/prpareConfigData%') or (request.uri like '%/cart/add') or (request.uri like '%/cart/hpeAddBundle%') or (request.uri like '%/cart/hpeBundleCheckValid%') or (request.uri like '%/cart/emailCart') or (request.uri like '%/delivery-address/checkoutShippingAddressVerification') or (request.uri like '%/emailQuoteCart') or (request.uri like '%/mycart') or (request.uri like '%/getquotepage/quoterequest%') or (request.uri like '%/match/addressSuggestions') or (request.uri like '%/handleGetQuote%') or  (request.uri like '%/match/addressSuggestions%') or (request.uri like '%/api/maintain') or (request.uri like '%/api/contact/create') or (request.uri like '%/multi/delivery-method/choose%') or (request.uri like '%/checkout/multi/payment-method/add%') or (request.uri like '%/loginValidation%') or (request.uri like '%/shop/rememberMe%') or (request.uri like '%/shop/login%')",
       "critical_val": 5,
       "warning_val": 3,
@@ -256,7 +256,7 @@
     },
     "metric5": {
       "accountId": "2781667",
-      "name": "Login (s)",
+      "name": "Login (sec)",
       "query": "FROM Transaction SELECT average(duration) WHERE appName IN ('211460-Next Generation eCommerce COLO-Production','212922-NSA - Geolocation Service HPE-PRD','214498-Mkt Product recommendation Engine-PRD','213741-Address Service-PRD','211289-emdm-production','211607-MDCP Contact-PRD')  AND request.uri IN ('/oktaSessionsMeResponse','/oktaAuthenticateEndpoint','/Geolocator-Service/GeoLocatorService','/oktaInvalidateUserSession') OR request.uri LIKE '%/login'",
       "critical_val": 5,
       "warning_val": 3,
@@ -264,7 +264,7 @@
     },
     "metric6": {
       "accountId": "2781667",
-      "name": "My Account Page (s)",
+      "name": "My Account Page (sec)",
       "query": "FROM Transaction SELECT average(duration) WHERE appName IN ('211460-Next Generation eCommerce COLO-Production','212922-NSA - Geolocation Service HPE-PRD','214498-Mkt Product recommendation Engine-PRD','213741-Address Service-PRD','211289-emdm-production','211607-MDCP Contact-PRD') AND (request.uri like  '%/my-account' or request.uri like  '%/profile/UserProfile%')",
       "critical_val": 5,
       "warning_val": 3,
@@ -272,7 +272,7 @@
     },
     "metric7": {
       "accountId": "2781667",
-      "name": "Purchase (s)",
+      "name": "Purchase (sec)",
       "query": "FROM Transaction SELECT average(duration) WHERE appName IN ('211460-Next Generation eCommerce COLO-Production','212922-NSA - Geolocation Service HPE-PRD','214498-Mkt Product recommendation Engine-PRD','213741-Address Service-PRD','211289-emdm-production','211607-MDCP Contact-PRD')  AND (request.uri like   '%/match/addressSuggestions%' or request.uri like '%/api/maintain'or request.uri like '%/api/contact/create' or request.uri like '%/multi/delivery-method/choose%' or request.uri like '%/checkout/multi/payment-method/add%')",
       "critical_val": 5,
       "warning_val": 3,
@@ -306,7 +306,7 @@
     },
     "metric2": {
       "accountId": "2781667",
-      "name": "Response Time (s)",
+      "name": "Response Time (sec)",
       "query": "FROM Transaction SELECT average(duration) WHERE appName = '210135-Partner Ready Portal (PRP)-Production'",
       "critical_val": 5,
       "warning_val": 3,
@@ -330,7 +330,7 @@
     },
     "metric5": {
       "accountId": "2781667",
-      "name": "Login (s)",
+      "name": "Login (sec)",
       "query": "FROM Transaction SELECT average(duration) WHERE appName = '210135-Partner Ready Portal (PRP)-Production' AND request.uri = '/web/prp/login'",
       "critical_val": 5,
       "warning_val": 3,
@@ -338,7 +338,7 @@
     },
     "metric6": {
       "accountId": "2781667",
-      "name": "Parther Authentication (s)",
+      "name": "Parther Authentication (sec)",
       "query": "FROM Transaction SELECT average(duration) WHERE appName = '210135-Partner Ready Portal (PRP)-Production' AND request.uri = '/group/prp'",
       "critical_val": 5,
       "warning_val": 3,
@@ -346,7 +346,7 @@
     },
     "metric7": {
       "accountId": "2781667",
-      "name": "Home Page (s)",
+      "name": "Home Page (sec)",
       "query": "FROM Transaction SELECT average(duration) WHERE appName = '210135-Partner Ready Portal (PRP)-Production' AND request.uri = '/group/prp/home'",
       "critical_val": 5,
       "warning_val": 3,
@@ -379,7 +379,7 @@
     },
     "metric2": {
       "accountId": "2781667",
-      "name": "Response Time (s)",
+      "name": "Response Time (sec)",
       "query": "FROM Transaction SELECT average(duration) WHERE appName = '213082-Next Gen Config-PRD-OCA'",
       "critical_val": 5,
       "warning_val": 3,
@@ -403,7 +403,7 @@
     },
     "metric5": {
       "accountId": "2781667",
-      "name": "OCA Internal Login (s)",
+      "name": "OCA Internal Login (sec)",
       "query": "FROM Transaction SELECT average(duration) WHERE appName = '213082-Next Gen Config-PRD-OCA' AND request.uri LIKE '%OCAInternalLogin%'",
       "critical_val": 5,
       "warning_val": 3,
@@ -411,7 +411,7 @@
     },
     "metric6": {
       "accountId": "2781667",
-      "name": "Save (s)",
+      "name": "Save (sec)",
       "query": "FROM Transaction SELECT average(duration) WHERE appName = '213082-Next Gen Config-PRD-OCA' AND Method_name='save_config'",
       "critical_val": 5,
       "warning_val": 3,
@@ -419,7 +419,7 @@
     },
     "metric7": {
       "accountId": "2781667",
-      "name": "Search (s)",
+      "name": "Search (sec)",
       "query": "FROM Transaction SELECT average(duration) WHERE appName = '213082-Next Gen Config-PRD-OCA' AND Method_name='get_result'",
       "critical_val": 5,
       "warning_val": 3,
@@ -452,7 +452,7 @@
     },
     "metric2": {
       "accountId": "2781667",
-      "name": "Response Time (s)",
+      "name": "Response Time (sec)",
       "query": "FROM Transaction SELECT average(duration) WHERE appName = '212948-Next Generation Quoter-PRD'",
       "critical_val": 5,
       "warning_val": 3,
@@ -476,7 +476,7 @@
     },
     "metric5": {
       "accountId": "2781667",
-      "name": "Import Opportunity (s)",
+      "name": "Import Opportunity (sec)",
       "query": "FROM Transaction SELECT average(duration) WHERE appName = '212948-Next Generation Quoter-PRD' AND request.uri = '/q2cwngq/opty/lookup'",
       "critical_val": 5,
       "warning_val": 3,
@@ -484,7 +484,7 @@
     },
     "metric6": {
       "accountId": "2781667",
-      "name": "Quote Save To QIDS (s)",
+      "name": "Quote Save To QIDS (sec)",
       "query": "FROM Transaction SELECT average(duration) WHERE appName = '212948-Next Generation Quoter-PRD' AND request.uri = '/q2cwngq/qids/saveNewQuoteToQids'",
       "critical_val": 5,
       "warning_val": 3,
@@ -492,7 +492,7 @@
     },
     "metric7": {
       "accountId": "2781667",
-      "name": "Add Product (s)",
+      "name": "Add Product (sec)",
       "query": "FROM Transaction SELECT average(duration) WHERE appName = '212948-Next Generation Quoter-PRD' AND request.uri = '/q2cwngq/itemDetail/getNewItemDetail'",
       "critical_val": 5,
       "warning_val": 3,
@@ -525,7 +525,7 @@
     },
     "metric2": {
       "accountId": "2948931",
-      "name": "Response Time (s)",
+      "name": "Response Time (sec)",
       "query": "FROM Transaction SELECT average(duration) WHERE appName = '213526-Carepack Management System (CAMS)-PRD'",
       "critical_val": 5,
       "warning_val": 3,
@@ -549,7 +549,7 @@
     },
     "metric5": {
       "accountId": "2948931",
-      "name": "Convert to Order (s)",
+      "name": "Convert to Order (sec)",
       "query": "SELECT average(duration) FROM Transaction WHERE appName = '213526-Carepack Management System (CAMS)-PRD' AND request.uri IN ('/wwpak.online/regSearch.aspx')",
       "critical_val": 5,
       "warning_val": 3,
@@ -557,7 +557,7 @@
     },
     "metric6": {
       "accountId": "2948931",
-      "name": "Create Custom (s)",
+      "name": "Create Custom (sec)",
       "query": "SELECT average(duration) FROM Transaction WHERE appName = '213526-Carepack Management System (CAMS)-PRD' AND (request.uri LIKE '/wwpak.online/regMaint.aspx')",
       "critical_val": 5,
       "warning_val": 3,
@@ -565,7 +565,7 @@
     },
     "metric7": {
       "accountId": "2948931",
-      "name": "Save Custom (s)",
+      "name": "Save Custom (sec)",
       "query": "SELECT average(duration) FROM Transaction WHERE appName = '213526-Carepack Management System (CAMS)-PRD' AND (request.uri LIKE '/crestwebapi/api/CarePackCentral/GetPacksForGoodsProduct')",
       "critical_val": 5,
       "warning_val": 3,
@@ -598,7 +598,7 @@
     },
     "metric2": {
       "accountId": "2948931",
-      "name": "Response Time (s)",
+      "name": "Response Time (sec)",
       "query": "FROM Transaction SELECT average(duration) WHERE appName = '213338-Cloud GSEM Case Exchange-PRD'",
       "critical_val": 5,
       "warning_val": 3,
@@ -622,7 +622,7 @@
     },
     "metric5": {
       "accountId": "2948931",
-      "name": "GSEM (s)",
+      "name": "GSEM (sec)",
       "query": "SELECT average(duration) FROM Transaction WHERE appName = '213338-Cloud GSEM Case Exchange-PRD' AND request.uri IN ('/gsemapi/redfish/v1/gsem')",
       "critical_val": 5,
       "warning_val": 3,
@@ -630,7 +630,7 @@
     },
     "metric6": {
       "accountId": "2948931",
-      "name": "DB Connections (s)",
+      "name": "DB Connections (sec)",
       "query": "SELECT average(duration) FROM Transaction WHERE appName = '213338-Cloud GSEM Case Exchange-PRD' AND (request.uri LIKE '/gsemapi/debug/TestDbConnections.aspx')",
       "critical_val": 5,
       "warning_val": 3,
@@ -638,7 +638,7 @@
     },
     "metric7": {
       "accountId": "2948931",
-      "name": "Get Message (s)",
+      "name": "Get Message (sec)",
       "query": "SELECT average(duration) FROM Transaction WHERE appName = '213338-Cloud GSEM Case Exchange-PRD' AND (request.uri LIKE '/gsemapi/redfish/v1/message')",
       "critical_val": 5,
       "warning_val": 3,
@@ -671,7 +671,7 @@
     },
     "metric2": {
       "accountId": "2948930",
-      "name": "Response Time (s)",
+      "name": "Response Time (sec)",
       "query": "FROM Transaction SELECT average(duration) WHERE appName = '213044-Config Line Item Checker-PRD'",
       "critical_val": 5,
       "warning_val": 3,
@@ -695,7 +695,7 @@
     },
     "metric5": {
       "accountId": "2948930",
-      "name": "CLIC Webservice (s)",
+      "name": "CLIC Webservice (sec)",
       "query": "SELECT average(duration) FROM Transaction WHERE appName = '213044-Config Line Item Checker-PRD' AND request.uri IN ('/clic/webservice')",
       "critical_val": 5,
       "warning_val": 3,
@@ -703,7 +703,7 @@
     },
     "metric6": {
       "accountId": "2948930",
-      "name": "Deployment Service (s)",
+      "name": "Deployment Service (sec)",
       "query": "SELECT average(duration) FROM Transaction WHERE appName = '213044-Config Line Item Checker-PRD' AND (request.uri LIKE '/bea_wls_deployment_internal/DeploymentService')",
       "critical_val": 5,
       "warning_val": 3,
@@ -711,7 +711,7 @@
     },
     "metric7": {
       "accountId": "2948930",
-      "name": "Report (s)",
+      "name": "Report (sec)",
       "query": "SELECT average(duration) FROM Transaction WHERE appName = '213044-Config Line Item Checker-PRD' AND (request.uri LIKE '/report/')",
       "critical_val": 5,
       "warning_val": 3,
@@ -744,7 +744,7 @@
     },
     "metric2": {
       "accountId": "2948930",
-      "name": "Response Time (s)",
+      "name": "Response Time (sec)",
       "query": "FROM Transaction SELECT average(duration) WHERE appName = '213049-CORONA-PRD'",
       "critical_val": 5,
       "warning_val": 3,
@@ -776,7 +776,7 @@
     },
     "metric6": {
       "accountId": "2948930",
-      "name": "Write Quote Service (s)",
+      "name": "Write Quote Service (sec)",
       "query": "FROM Transaction SELECT average(duration) WHERE appName = '213049-CORONA-PRD' AND request.uri LIKE '%WriteQuoteService/jacksonJson%'",
       "critical_val": 5,
       "warning_val": 3,
@@ -784,7 +784,7 @@
     },
     "metric7": {
       "accountId": "2948930",
-      "name": "Read Quote (s)",
+      "name": "Read Quote (sec)",
       "query": "FROM Transaction SELECT average(duration) WHERE appName = '213049-CORONA-PRD' AND request.uri LIKE '%readquote%'",
       "critical_val": 5,
       "warning_val": 3,
@@ -817,7 +817,7 @@
     },
     "metric2": {
       "accountId": "2781667",
-      "name": "Response Time (s)",
+      "name": "Response Time (sec)",
       "query": "FROM Transaction SELECT average(duration) WHERE appName = '209927-Hybris Services CPQ COLO-Production'",
       "critical_val": 5,
       "warning_val": 3,
@@ -841,7 +841,7 @@
     },
     "metric5": {
       "accountId": "2781667",
-      "name": "Login (s)",
+      "name": "Login (sec)",
       "query": "SELECT average(duration) FROM Transaction WHERE appName = '209927-Hybris Services CPQ COLO-Production' AND request.uri IN ('/servicesCPQ/login/selection', '/servicesCPQ/login/selection')",
       "critical_val": 5,
       "warning_val": 3,
@@ -849,7 +849,7 @@
     },
     "metric6": {
       "accountId": "2781667",
-      "name": "Purchase (s)",
+      "name": "Purchase (sec)",
       "query": "SELECT average(duration) FROM Transaction WHERE appName = '209927-Hybris Services CPQ COLO-Production' AND (request.uri LIKE '/my-quotes/purchaseQuote' OR request.uri LIKE '/servicesCPQ/%/%/my-quotes/saveOac' OR request.uri LIKE '/servicesCPQ/%/%/quoteReview/quoteSubmit/')",
       "critical_val": 5,
       "warning_val": 3,
@@ -857,7 +857,7 @@
     },
     "metric7": {
       "accountId": "2781667",
-      "name": "Start Quote (s)",
+      "name": "Start Quote (sec)",
       "query": "SELECT average(duration) FROM Transaction WHERE appName = '209927-Hybris Services CPQ COLO-Production' AND (request.uri LIKE '/servicesCPQ/%/accounts/list' OR request.uri LIKE '/servicesCPQ/%/%/quoteListing/getQuotesForQuoteListingPage' OR request.uri LIKE '/servicesCPQ/%/%/quoteListing/quoteCreation' OR request.uri LIKE '%servicesCPQ/account/searchAccount')",
       "critical_val": 5,
       "warning_val": 3,
@@ -890,7 +890,7 @@
     },
     "metric2": {
       "accountId": "2948931",
-      "name": "Response Time (s)",
+      "name": "Response Time (sec)",
       "query": "FROM Transaction SELECT average(duration) WHERE appName = '213390-Cross-Category Cost Convergence-PRD'",
       "critical_val": 5,
       "warning_val": 3,
@@ -914,7 +914,7 @@
     },
     "metric5": {
       "accountId": "2948931",
-      "name": "C4 Output (s)",
+      "name": "C4 Output (sec)",
       "query": "SELECT average(duration) FROM Transaction WHERE appName = '213390-Cross-Category Cost Convergence-PRD' AND request.uri IN ('/C4OutputPort')",
       "critical_val": 5,
       "warning_val": 3,
@@ -922,7 +922,7 @@
     },
     "metric6": {
       "accountId": "2948931",
-      "name": "Submit Cost Form (s)",
+      "name": "Submit Cost Form (sec)",
       "query": "SELECT average(duration) FROM Transaction WHERE appName = '213390-Cross-Category Cost Convergence-PRD' AND (request.uri LIKE '/submitCosForm.do')",
       "critical_val": 5,
       "warning_val": 3,
@@ -930,7 +930,7 @@
     },
     "metric7": {
       "accountId": "2948931",
-      "name": "Config Service (s)",
+      "name": "Config Service (sec)",
       "query": "SELECT average(duration) FROM Transaction WHERE appName = '213390-Cross-Category Cost Convergence-PRD' AND (request.uri LIKE '/lookUpCost.do')",
       "critical_val": 5,
       "warning_val": 3,
@@ -963,7 +963,7 @@
     },
     "metric2": {
       "accountId": "2948931",
-      "name": "Response Time (s)",
+      "name": "Response Time (sec)",
       "query": "FROM Transaction SELECT average(duration) WHERE appName = '213029-Eclipse-PRD'",
       "critical_val": 5,
       "warning_val": 3,
@@ -1036,7 +1036,7 @@
     },
     "metric2": {
       "accountId": "2781667",
-      "name": "Response Time (s)",
+      "name": "Response Time (sec)",
       "query": "FROM Transaction SELECT average(duration) WHERE appName = '210147-EMDMH-Production'",
       "critical_val": 5,
       "warning_val": 3,
@@ -1060,7 +1060,7 @@
     },
     "metric5": {
       "accountId": "2781667",
-      "name": "Get Party Allocated Data (s)",
+      "name": "Get Party Allocated Data (sec)",
       "query": "FROM Transaction SELECT average(duration) WHERE appName = '210147-EMDMH-Production' AND request.uri LIKE '%/STA/getPartyAllocatedData%'",
       "critical_val": 5,
       "warning_val": 3,
@@ -1068,7 +1068,7 @@
     },
     "metric6": {
       "accountId": "2781667",
-      "name": "Get Group Details (s)",
+      "name": "Get Group Details (sec)",
       "query": "FROM Transaction SELECT average(duration) WHERE appName = '210147-EMDMH-Production' AND request.uri LIKE '%/STA/companygroup/getGroupDetails%'",
       "critical_val": 5,
       "warning_val": 3,
@@ -1076,7 +1076,7 @@
     },
     "metric7": {
       "accountId": "2781667",
-      "name": "Search Party (s)",
+      "name": "Search Party (sec)",
       "query": "FROM Transaction SELECT average(duration) WHERE appName = '210147-EMDMH-Production' AND request.uri LIKE '%/CompanyHierarchyService/searchhrchypart%'",
       "critical_val": 5,
       "warning_val": 3,
@@ -1109,7 +1109,7 @@
     },
     "metric2": {
       "accountId": "2781667",
-      "name": "Response Time (s)",
+      "name": "Response Time (sec)",
       "query": "FROM Transaction SELECT average(duration) WHERE appName = '211289-emdm-production'",
       "critical_val": 5,
       "warning_val": 3,
@@ -1133,7 +1133,7 @@
     },
     "metric5": {
       "accountId": "2781667",
-      "name": "Party Lookup (s)",
+      "name": "Party Lookup (sec)",
       "query": "SELECT average(duration) FROM Transaction WHERE appName = '211289-emdm-production' AND request.uri IN ('/api/partylookup')",
       "critical_val": 5,
       "warning_val": 3,
@@ -1141,7 +1141,7 @@
     },
     "metric6": {
       "accountId": "2781667",
-      "name": "Party Allocated Data (s)",
+      "name": "Party Allocated Data (sec)",
       "query": "SELECT average(duration) FROM Transaction WHERE appName = '211289-emdm-production' AND (request.uri LIKE '/api/getPartyAllocatedData')",
       "critical_val": 5,
       "warning_val": 3,
@@ -1149,7 +1149,7 @@
     },
     "metric7": {
       "accountId": "2781667",
-      "name": "Search (s)",
+      "name": "Search (sec)",
       "query": "SELECT average(duration) FROM Transaction WHERE appName = '211289-emdm-production' AND (request.uri LIKE '/api/search')",
       "critical_val": 5,
       "warning_val": 3,
@@ -1182,7 +1182,7 @@
     },
     "metric2": {
       "accountId": "2948931",
-      "name": "Response Time (s)",
+      "name": "Response Time (sec)",
       "query": "FROM Transaction SELECT average(duration) WHERE appName = '213064-EOP (HPE)-PRD'",
       "critical_val": 5,
       "warning_val": 3,
@@ -1206,7 +1206,7 @@
     },
     "metric5": {
       "accountId": "2948931",
-      "name": "Company List (s)",
+      "name": "Company List (sec)",
       "query": "SELECT average(duration) FROM Transaction WHERE appName = '213064-EOP (HPE)-PRD' AND request.uri IN ('/eop/ieop/CascadingService.asmx/GetCompanyList')",
       "critical_val": 5,
       "warning_val": 3,
@@ -1214,7 +1214,7 @@
     },
     "metric6": {
       "accountId": "2948931",
-      "name": "Country List (s)",
+      "name": "Country List (sec)",
       "query": "SELECT average(duration) FROM Transaction WHERE appName = '213064-EOP (HPE)-PRD' AND (request.uri LIKE '/eop/ieop/CascadingService.asmx/GetCountryList')",
       "critical_val": 5,
       "warning_val": 3,
@@ -1222,7 +1222,7 @@
     },
     "metric7": {
       "accountId": "2948931",
-      "name": "iEOP (s)",
+      "name": "iEOP (sec)",
       "query": "SELECT average(duration) FROM Transaction WHERE appName = '213064-EOP (HPE)-PRD' AND (request.uri LIKE '/EOP/iEOP/')",
       "critical_val": 5,
       "warning_val": 3,
@@ -1255,7 +1255,7 @@
     },
     "metric2": {
       "accountId": "2948931",
-      "name": "Response Time (s)",
+      "name": "Response Time (sec)",
       "query": "FROM Transaction SELECT average(duration) WHERE appName = '213219-eSAM SCA PWB S360-PRD'",
       "critical_val": 5,
       "warning_val": 3,
@@ -1279,7 +1279,7 @@
     },
     "metric5": {
       "accountId": "2948931",
-      "name": "Home (s)",
+      "name": "Home (sec)",
       "query": "SELECT average(duration) FROM Transaction WHERE appName = '213219-eSAM SCA PWB S360-PRD' AND request.uri IN ('/etoolss360/')",
       "critical_val": 5,
       "warning_val": 3,
@@ -1287,7 +1287,7 @@
     },
     "metric6": {
       "accountId": "2948931",
-      "name": "Login (s)",
+      "name": "Login (sec)",
       "query": "SELECT average(duration) FROM Transaction WHERE appName = '213219-eSAM SCA PWB S360-PRD' AND (request.uri LIKE '/etoolss360/login.do')",
       "critical_val": 5,
       "warning_val": 3,
@@ -1295,7 +1295,7 @@
     },
     "metric7": {
       "accountId": "2948931",
-      "name": "Register Email (s)",
+      "name": "Register Email (sec)",
       "query": "SELECT average(duration) FROM Transaction WHERE appName = '213219-eSAM SCA PWB S360-PRD' AND (request.uri LIKE '/etoolss360/registerEmail.jsp')",
       "critical_val": 5,
       "warning_val": 3,
@@ -1328,7 +1328,7 @@
     },
     "metric2": {
       "accountId": "2948931",
-      "name": "Response Time (s)",
+      "name": "Response Time (sec)",
       "query": "FROM Transaction SELECT average(duration) WHERE appName = '212883-ezPRS-Production'",
       "critical_val": 5,
       "warning_val": 3,
@@ -1368,7 +1368,7 @@
     },
     "metric7": {
       "accountId": "2948931",
-      "name": "Protected Monitor (s)",
+      "name": "Protected Monitor (sec)",
       "query": "SELECT average(duration) FROM Transaction WHERE appName = '212883-ezPRS-Production' AND (request.uri LIKE '/ezPRS/protected/Monitor.jsp')",
       "critical_val": 5,
       "warning_val": 3,
@@ -1401,7 +1401,7 @@
     },
     "metric2": {
       "accountId": "2781667",
-      "name": "Response Time (s)",
+      "name": "Response Time (sec)",
       "query": "FROM Transaction SELECT average(duration) WHERE appName = '212950-Global Rebates Suite (GRS)-PRD'",
       "critical_val": 5,
       "warning_val": 3,
@@ -1425,7 +1425,7 @@
     },
     "metric5": {
       "accountId": "2781667",
-      "name": "Settlement Reconcile (s)",
+      "name": "Settlement Reconcile (sec)",
       "query": "SELECT average(duration) FROM Transaction WHERE appName = '212950-Global Rebates Suite (GRS)-PRD' AND request.uri IN ('/grsweb/rebateRequestSettlementReconcile')",
       "critical_val": 5,
       "warning_val": 3,
@@ -1433,7 +1433,7 @@
     },
     "metric6": {
       "accountId": "2781667",
-      "name": "Settlement Response (s)",
+      "name": "Settlement Response (sec)",
       "query": "SELECT average(duration) FROM Transaction WHERE appName = '212950-Global Rebates Suite (GRS)-PRD' AND (request.uri LIKE '/grsweb/processSettlementResponse')",
       "critical_val": 5,
       "warning_val": 3,
@@ -1441,7 +1441,7 @@
     },
     "metric7": {
       "accountId": "2781667",
-      "name": "Claim Response (s)",
+      "name": "Claim Response (sec)",
       "query": "SELECT average(duration) FROM Transaction WHERE appName = '212950-Global Rebates Suite (GRS)-PRD' AND (request.uri LIKE '/grsweb/processRebateClaimResponses')",
       "critical_val": 5,
       "warning_val": 3,
@@ -1474,7 +1474,7 @@
     },
     "metric2": {
       "accountId": "2948931",
-      "name": "Response Time (s)",
+      "name": "Response Time (sec)",
       "query": "FROM Transaction SELECT average(duration) WHERE appName = '213261-GSD Services-PRD'",
       "critical_val": 5,
       "warning_val": 3,
@@ -1498,7 +1498,7 @@
     },
     "metric5": {
       "accountId": "2948931",
-      "name": "Get Entitlement (s)",
+      "name": "Get Entitlement (sec)",
       "query": "SELECT average(duration) FROM Transaction WHERE appName = '213261-GSD Services-PRD' AND request.uri IN ('/api/CSCE/GetEntitlementOffersUsingDataContract')",
       "critical_val": 5,
       "warning_val": 3,
@@ -1506,7 +1506,7 @@
     },
     "metric6": {
       "accountId": "2948931",
-      "name": "Product Service Contract (s)",
+      "name": "Product Service Contract (sec)",
       "query": "SELECT average(duration) FROM Transaction WHERE appName = '213261-GSD Services-PRD' AND (request.uri LIKE '/ProductServices/ProductService.svc')",
       "critical_val": 5,
       "warning_val": 3,
@@ -1514,7 +1514,7 @@
     },
     "metric7": {
       "accountId": "2948931",
-      "name": "GSD Search ODS (s)",
+      "name": "GSD Search ODS (sec)",
       "query": "SELECT average(duration) FROM Transaction WHERE appName = '213261-GSD Services-PRD' AND (request.uri LIKE '/gsdkmodata/odata/GSDSearchODS')",
       "critical_val": 5,
       "warning_val": 3,
@@ -1547,7 +1547,7 @@
     },
     "metric2": {
       "accountId": "3014900",
-      "name": "Response Time (s)",
+      "name": "Response Time (sec)",
       "query": "FROM Transaction SELECT average(duration) WHERE appName = '213503-Global Tax Engine-Integration'",
       "critical_val": 5,
       "warning_val": 3,
@@ -1571,7 +1571,7 @@
     },
     "metric5": {
       "accountId": "3014900",
-      "name": "XML Invoice (s)",
+      "name": "XML Invoice (sec)",
       "query": "SELECT average(duration) FROM Transaction WHERE appName = '213503-Global Tax Engine-Integration' AND request.uri IN ('/sabrix/xmlinvoice')",
       "critical_val": 5,
       "warning_val": 3,
@@ -1579,7 +1579,7 @@
     },
     "metric6": {
       "accountId": "3014900",
-      "name": "Transform (s)",
+      "name": "Transform (sec)",
       "query": "SELECT average(duration) FROM Transaction WHERE appName = '213503-Global Tax Engine-Integration' AND (request.uri LIKE '/Transform/GTETransform/transform')",
       "critical_val": 5,
       "warning_val": 3,
@@ -1587,7 +1587,7 @@
     },
     "metric7": {
       "accountId": "3014900",
-      "name": "Tax Calculation Service (s)",
+      "name": "Tax Calculation Service (sec)",
       "query": "SELECT average(duration) FROM Transaction WHERE appName = '213503-Global Tax Engine-Integration' AND (request.uri LIKE '/sabrix/services/taxcalculationservice/2011-09-01/taxcalculationservice/services/taxcalculationservice/2011-09-01/taxcalculationservice')",
       "critical_val": 5,
       "warning_val": 3,
@@ -1620,7 +1620,7 @@
     },
     "metric2": {
       "accountId": "2948931",
-      "name": "Response Time (s)",
+      "name": "Response Time (sec)",
       "query": "FROM Transaction SELECT average(duration) WHERE appName = '213067-HPE Linux Shared Web Hosting-PRD'",
       "critical_val": 5,
       "warning_val": 3,
@@ -1644,7 +1644,7 @@
     },
     "metric5": {
       "accountId": "2948931",
-      "name": "p1lg508994 - Status (s)",
+      "name": "p1lg508994 - Status (sec)",
       "query": "FROM SyntheticCheck SELECT percentage(count(*), WHERE result='SUCCESS') WHERE monitorName = '213067-HPE Linux Shared Web Hosting-PRD(Apache URL-p1lg508994)'",
       "critical_val": 95,
       "warning_val": 99,
@@ -1652,7 +1652,7 @@
     },
     "metric6": {
       "accountId": "2948931",
-      "name": "p1lg508996 - Status (s)",
+      "name": "p1lg508996 - Status (sec)",
       "query": "FROM SyntheticCheck SELECT percentage(count(*), WHERE result='SUCCESS') WHERE monitorName = '213067-HPE Linux Shared Web Hosting-PRD(Apache URL-p1lg508996)'",
       "critical_val": 95,
       "warning_val": 99,
@@ -1660,7 +1660,7 @@
     },
     "metric7": {
       "accountId": "2948931",
-      "name": "p1lg508980 - Status (s)",
+      "name": "p1lg508980 - Status (sec)",
       "query": "FROM SyntheticCheck SELECT percentage(count(*), WHERE result='SUCCESS') WHERE monitorName = '213067-HPE Linux Shared Web Hosting-PRD(Apache URL-p1lg508980)'",
       "critical_val": 95,
       "warning_val": 99,
@@ -1693,7 +1693,7 @@
     },
     "metric2": {
       "accountId": "2948931",
-      "name": "Response Time (s)",
+      "name": "Response Time (sec)",
       "query": "FROM Transaction SELECT average(duration) WHERE appName = '213679-Master Data Control Point - MDM-PRD'",
       "critical_val": 5,
       "warning_val": 3,
@@ -1717,7 +1717,7 @@
     },
     "metric5": {
       "accountId": "2948931",
-      "name": "Create Order Ready Customer (s)",
+      "name": "Create Order Ready Customer (sec)",
       "query": "SELECT average(duration) FROM Transaction WHERE appName = '213679-Master Data Control Point - MDM-PRD' AND request.uri IN ('/customer-manager-mars/services/CreateOrderReadyCustomerV3')",
       "critical_val": 5,
       "warning_val": 3,
@@ -1725,7 +1725,7 @@
     },
     "metric6": {
       "accountId": "2948931",
-      "name": "Cleanse (s)",
+      "name": "Cleanse (sec)",
       "query": "SELECT average(duration) FROM Transaction WHERE appName = '213679-Master Data Control Point - MDM-PRD' AND (request.uri LIKE '/cleanse/')",
       "critical_val": 5,
       "warning_val": 3,
@@ -1733,7 +1733,7 @@
     },
     "metric7": {
       "accountId": "2948931",
-      "name": "Sales Account Read (s)",
+      "name": "Sales Account Read (sec)",
       "query": "SELECT average(duration) FROM Transaction WHERE appName = '213679-Master Data Control Point - MDM-PRD' AND (request.uri LIKE '/customer-manager-mars/services/SalesAccountReadWebService')",
       "critical_val": 5,
       "warning_val": 3,
@@ -1766,7 +1766,7 @@
     },
     "metric2": {
       "accountId": "2948931",
-      "name": "Response Time (s)",
+      "name": "Response Time (sec)",
       "query": "FROM Transaction SELECT average(duration) WHERE appName = '213197-MyNetWorkingPortal-PRD'",
       "critical_val": 5,
       "warning_val": 3,
@@ -1790,7 +1790,7 @@
     },
     "metric5": {
       "accountId": "2948931",
-      "name": "License Acquisition Service (s)",
+      "name": "License Acquisition Service (sec)",
       "query": "SELECT average(duration) FROM Transaction WHERE appName = '213197-MyNetWorkingPortal-PRD' AND request.uri IN ('/Pnb.WebSvcs/Pnb.WebSvcs.LicenseAcquisition/LicenseAcquisitionService.asmx')",
       "critical_val": 5,
       "warning_val": 3,
@@ -1798,7 +1798,7 @@
     },
     "metric6": {
       "accountId": "2948931",
-      "name": "PCM Web Service (s)",
+      "name": "PCM Web Service (sec)",
       "query": "SELECT average(duration) FROM Transaction WHERE appName = '213197-MyNetWorkingPortal-PRD' AND (request.uri LIKE '/web/services/pcm3/PcmWebSvc.asmx')",
       "critical_val": 5,
       "warning_val": 3,
@@ -1806,7 +1806,7 @@
     },
     "metric7": {
       "accountId": "2948931",
-      "name": "Membership Service (s)",
+      "name": "Membership Service (sec)",
       "query": "SELECT average(duration) FROM Transaction WHERE appName = '213197-MyNetWorkingPortal-PRD' AND (request.uri LIKE '/Pnb.WebSvcs/Pnb.Websvcs.Security/MembershipService.asmx')",
       "critical_val": 5,
       "warning_val": 3,
@@ -1839,7 +1839,7 @@
     },
     "metric2": {
       "accountId": "3014900",
-      "name": "Response Time (s)",
+      "name": "Response Time (sec)",
       "query": "FROM Transaction SELECT average(duration) WHERE appName = '214498-Mkt Product recommendation Engine-PRD'",
       "critical_val": 5,
       "warning_val": 3,
@@ -1863,7 +1863,7 @@
     },
     "metric5": {
       "accountId": "3014900",
-      "name": "SKU Listx (s)",
+      "name": "SKU Listx (sec)",
       "query": "SELECT average(duration) FROM Transaction WHERE appName = '214498-Mkt Product recommendation Engine-PRD' AND request.uri IN ('/sku/list')",
       "critical_val": 5,
       "warning_val": 3,
@@ -1871,7 +1871,7 @@
     },
     "metric6": {
       "accountId": "3014900",
-      "name": "Modernizer (s)",
+      "name": "Modernizer (sec)",
       "query": "SELECT average(duration) FROM Transaction WHERE appName = '214498-Mkt Product recommendation Engine-PRD' AND (request.uri LIKE '/bundles/modernizr')",
       "critical_val": 5,
       "warning_val": 3,
@@ -1879,7 +1879,7 @@
     },
     "metric7": {
       "accountId": "3014900",
-      "name": "Home Page (s)",
+      "name": "Home Page (sec)",
       "query": "SELECT average(duration) FROM Transaction WHERE appName = '214498-Mkt Product recommendation Engine-PRD' AND (request.uri LIKE '/')",
       "critical_val": 5,
       "warning_val": 3,
@@ -1912,7 +1912,7 @@
     },
     "metric2": {
       "accountId": "2781667",
-      "name": "Response Time (s)",
+      "name": "Response Time (sec)",
       "query": "FROM Transaction SELECT average(duration) WHERE appName = '211460-Next Generation eCommerce COLO-Production'",
       "critical_val": 5,
       "warning_val": 3,
@@ -1936,7 +1936,7 @@
     },
     "metric5": {
       "accountId": "2781667",
-      "name": "Cart (s)",
+      "name": "Cart (sec)",
       "query": "SELECT average(duration) FROM Transaction WHERE appName = '211460-Next Generation eCommerce COLO-Production' AND request.uri LIKE '%/mycart'",
       "critical_val": 5,
       "warning_val": 3,
@@ -1944,7 +1944,7 @@
     },
     "metric6": {
       "accountId": "2781667",
-      "name": "B2B Login (s)",
+      "name": "B2B Login (sec)",
       "query": "SELECT average(duration) FROM Transaction WHERE appName = '211460-Next Generation eCommerce COLO-Production' AND (request.uri LIKE '/shop/login')",
       "critical_val": 5,
       "warning_val": 3,
@@ -1952,7 +1952,7 @@
     },
     "metric7": {
       "accountId": "2781667",
-      "name": "B2C Login (s)",
+      "name": "B2C Login (sec)",
       "query": "SELECT average(duration) FROM Transaction WHERE appName = '211460-Next Generation eCommerce COLO-Production' AND (request.uri LIKE '/login')",
       "critical_val": 5,
       "warning_val": 3,
@@ -1985,7 +1985,7 @@
     },
     "metric2": {
       "accountId": "2781667",
-      "name": "Response Time (s)",
+      "name": "Response Time (sec)",
       "query": "FROM Transaction SELECT average(duration) WHERE appName = '213051-Next Gen Quote-To-Order Conversion Engine-PRD'",
       "critical_val": 5,
       "warning_val": 3,
@@ -2009,7 +2009,7 @@
     },
     "metric5": {
       "accountId": "2781667",
-      "name": "Convert to Order (s)",
+      "name": "Convert to Order (sec)",
       "query": "SELECT average(duration) FROM Transaction WHERE appName = '213051-Next Gen Quote-To-Order Conversion Engine-PRD' AND request.uri = '/q2cngom/qtco/ws/cto/convert'",
       "critical_val": 5,
       "warning_val": 3,
@@ -2017,7 +2017,7 @@
     },
     "metric6": {
       "accountId": "2781667",
-      "name": "Create (s)",
+      "name": "Create (sec)",
       "query": "SELECT average(duration) FROM Transaction WHERE appName = '213051-Next Gen Quote-To-Order Conversion Engine-PRD' AND request.uri = '/q2cngom/qtco/prevalidation/applyRulesForCreateNew'",
       "critical_val": 5,
       "warning_val": 3,
@@ -2025,7 +2025,7 @@
     },
     "metric7": {
       "accountId": "2781667",
-      "name": "Save (s)",
+      "name": "Save (sec)",
       "query": "SELECT average(duration) FROM Transaction WHERE appName = '213051-Next Gen Quote-To-Order Conversion Engine-PRD' AND request.uri = '/q2cngom/qtco/quotationchange/clone'",
       "critical_val": 5,
       "warning_val": 3,
@@ -2058,7 +2058,7 @@
     },
     "metric2": {
       "accountId": "2781667",
-      "name": "Response Time (s)",
+      "name": "Response Time (sec)",
       "query": "FROM Transaction SELECT average(duration) WHERE appName = '212948-Next Generation Quoter-DEAL-UI-PRD'",
       "critical_val": 5,
       "warning_val": 3,
@@ -2082,7 +2082,7 @@
     },
     "metric5": {
       "accountId": "2781667",
-      "name": "Convert to Order (s)",
+      "name": "Convert to Order (sec)",
       "query": "SELECT average(duration) FROM Transaction WHERE appName = '212948-Next Generation Quoter-DEAL-UI-PRD' AND request.uri IN ('/deal-ui/fetch/dealinfo')",
       "critical_val": 5,
       "warning_val": 3,
@@ -2090,7 +2090,7 @@
     },
     "metric6": {
       "accountId": "2781667",
-      "name": "Create (s)",
+      "name": "Create (sec)",
       "query": "SELECT average(duration) FROM Transaction WHERE appName = '212948-Next Generation Quoter-DEAL-UI-PRD' AND (request.uri LIKE '/deal-admin/usr/prf/getLnkdCountryFrUsr')",
       "critical_val": 5,
       "warning_val": 3,
@@ -2098,7 +2098,7 @@
     },
     "metric7": {
       "accountId": "2781667",
-      "name": "Save (s)",
+      "name": "Save (sec)",
       "query": "SELECT average(duration) FROM Transaction WHERE appName = '212948-Next Generation Quoter-DEAL-UI-PRD' AND (request.uri LIKE '/deal-admin/userpref/saveDealLockFlag')",
       "critical_val": 5,
       "warning_val": 3,
@@ -2131,7 +2131,7 @@
     },
     "metric2": {
       "accountId": "2781667",
-      "name": "Response Time (s)",
+      "name": "Response Time (sec)",
       "query": "FROM Transaction SELECT average(duration) WHERE appName = '213051-Order Capture Layer-PRD'",
       "critical_val": 5,
       "warning_val": 3,
@@ -2155,7 +2155,7 @@
     },
     "metric5": {
       "accountId": "2781667",
-      "name": "Changed Orders (s)",
+      "name": "Changed Orders (sec)",
       "query": "SELECT average(duration) FROM Transaction WHERE appName = '213051-Order Capture Layer-PRD' AND request.uri IN ('/ocl-ui/orderStatus/getChangedOrders')",
       "critical_val": 5,
       "warning_val": 3,
@@ -2163,7 +2163,7 @@
     },
     "metric6": {
       "accountId": "2781667",
-      "name": "Prime Cart (s)",
+      "name": "Prime Cart (sec)",
       "query": "SELECT average(duration) FROM Transaction WHERE appName = '213051-Order Capture Layer-PRD' AND (request.uri LIKE '/ocl-ui/punchout/receiveeprimecart')",
       "critical_val": 5,
       "warning_val": 3,
@@ -2171,7 +2171,7 @@
     },
     "metric7": {
       "accountId": "2781667",
-      "name": "Document Search (s)",
+      "name": "Document Search (sec)",
       "query": "SELECT average(duration) FROM Transaction WHERE appName = '213051-Order Capture Layer-PRD' AND (request.uri LIKE '/ocl-ui/searchdocument/search')",
       "critical_val": 5,
       "warning_val": 3,
@@ -2204,7 +2204,7 @@
     },
     "metric2": {
       "accountId": "2948930",
-      "name": "Response Time (s)",
+      "name": "Response Time (sec)",
       "query": "FROM Transaction SELECT average(duration) WHERE appName = '213083-Pricing Analytics-PRD-Optimus'",
       "critical_val": 5,
       "warning_val": 3,
@@ -2228,7 +2228,7 @@
     },
     "metric5": {
       "accountId": "2948930",
-      "name": "GetGuidance (s)",
+      "name": "GetGuidance (sec)",
       "query": "FROM Transaction SELECT average(duration) WHERE appName = '213083-Pricing Analytics-PRD-Optimus' AND request.uri LIKE '%services/OptimusService%' and name LIKE '%/OptimusService/GetSavedGuidance%'",
       "critical_val": 5,
       "warning_val": 3,
@@ -2236,7 +2236,7 @@
     },
     "metric6": {
       "accountId": "2948930",
-      "name": "PriceLineItems (s)",
+      "name": "PriceLineItems (sec)",
       "query": "FROM Transaction SELECT average(duration) WHERE appName = '213083-Pricing Analytics-PRD-Optimus' AND request.uri LIKE '%services/OptimusService%' and name LIKE '%OptimusService/PriceLineItems%'",
       "critical_val": 5,
       "warning_val": 3,
@@ -2244,7 +2244,7 @@
     },
     "metric7": {
       "accountId": "2948930",
-      "name": "CalcMarginAndDiscPct (s)",
+      "name": "CalcMarginAndDiscPct (sec)",
       "query": "FROM Transaction SELECT average(duration) WHERE appName = '213083-Pricing Analytics-PRD-Optimus' AND request.uri LIKE '%services/OptimusService%' and name LIKE '%OptimusService/CalcMarginAndDiscPct%'",
       "critical_val": 5,
       "warning_val": 3,
@@ -2277,7 +2277,7 @@
     },
     "metric2": {
       "accountId": "2948931",
-      "name": "Response Time (s)",
+      "name": "Response Time (sec)",
       "query": "FROM Transaction SELECT average(duration) WHERE appName = '212966-PACE (Partner Compensation Calculation Engine)-PRD'",
       "critical_val": 5,
       "warning_val": 3,
@@ -2301,7 +2301,7 @@
     },
     "metric5": {
       "accountId": "2948931",
-      "name": "CO2 Refresh Job (s)",
+      "name": "CO2 Refresh Job (sec)",
       "query": "SELECT average(duration) FROM Transaction WHERE appName = '212966-PACE (Partner Compensation Calculation Engine)-PRD' AND request.uri IN ('/pace-jobs/co2Refresh/getCO2RefreshJob')",
       "critical_val": 5,
       "warning_val": 3,
@@ -2309,7 +2309,7 @@
     },
     "metric6": {
       "accountId": "2948931",
-      "name": "Job Details (s)",
+      "name": "Job Details (sec)",
       "query": "SELECT average(duration) FROM Transaction WHERE appName = '212966-PACE (Partner Compensation Calculation Engine)-PRD' AND (request.uri LIKE '/pace-jobs/calcEngine/getJobDetails')",
       "critical_val": 5,
       "warning_val": 3,
@@ -2317,7 +2317,7 @@
     },
     "metric7": {
       "accountId": "2948931",
-      "name": "Performance Data (s)",
+      "name": "Performance Data (sec)",
       "query": "SELECT average(duration) FROM Transaction WHERE appName = '212966-PACE (Partner Compensation Calculation Engine)-PRD' AND (request.uri LIKE '/pace-co2/performance/performanceData')",
       "critical_val": 5,
       "warning_val": 3,
@@ -2350,7 +2350,7 @@
     },
     "metric2": {
       "accountId": "2948930",
-      "name": "Response Time (s)",
+      "name": "Response Time (sec)",
       "query": "FROM Transaction SELECT average(duration) WHERE appName = '213083-Pricing Analytics-PRD-PPSS'",
       "critical_val": 5,
       "warning_val": 3,
@@ -2374,7 +2374,7 @@
     },
     "metric5": {
       "accountId": "2948930",
-      "name": "Pricing Service (s)",
+      "name": "Pricing Service (sec)",
       "query": "SELECT average(duration) FROM Transaction WHERE appName = '213083-Pricing Analytics-PRD-PPSS' AND request.uri IN ('/axis2/services/PricingService')",
       "critical_val": 5,
       "warning_val": 3,
@@ -2382,7 +2382,7 @@
     },
     "metric6": {
       "accountId": "2948930",
-      "name": "PPSS (s)",
+      "name": "PPSS (sec)",
       "query": "SELECT average(duration) FROM Transaction WHERE appName = '213083-Pricing Analytics-PRD-PPSS' AND (request.uri LIKE '/PPSS/PPSS')",
       "critical_val": 5,
       "warning_val": 3,
@@ -2390,7 +2390,7 @@
     },
     "metric7": {
       "accountId": "2948930",
-      "name": "Current User (s)",
+      "name": "Current User (sec)",
       "query": "SELECT average(duration) FROM Transaction WHERE appName = '213083-Pricing Analytics-PRD-PPSS' AND (request.uri LIKE '/PPSS/internal/pillar/currentuser')",
       "critical_val": 5,
       "warning_val": 3,
@@ -2423,7 +2423,7 @@
     },
     "metric2": {
       "accountId": "2948930",
-      "name": "Response Time (s)",
+      "name": "Response Time (sec)",
       "query": "FROM Transaction SELECT average(duration) WHERE appName = '213083-Pricing Analytics-PRD'",
       "critical_val": 5,
       "warning_val": 3,
@@ -2447,7 +2447,7 @@
     },
     "metric5": {
       "accountId": "2948930",
-      "name": "Pricing Service (s)",
+      "name": "Pricing Service (sec)",
       "query": "SELECT average(duration) FROM Transaction WHERE appName = '213083-Pricing Analytics-PRD' AND request.uri IN ('/axis2/services/PricingService')",
       "critical_val": 5,
       "warning_val": 3,
@@ -2455,7 +2455,7 @@
     },
     "metric6": {
       "accountId": "2948930",
-      "name": "Optimus Service (s)",
+      "name": "Optimus Service (sec)",
       "query": "SELECT average(duration) FROM Transaction WHERE appName = '213083-Pricing Analytics-PRD' AND (request.uri LIKE '/optimus/services/OptimusService')",
       "critical_val": 5,
       "warning_val": 3,
@@ -2463,7 +2463,7 @@
     },
     "metric7": {
       "accountId": "2948930",
-      "name": "Get Static Data (s)",
+      "name": "Get Static Data (sec)",
       "query": "SELECT average(duration) FROM Transaction WHERE appName = '213083-Pricing Analytics-PRD' AND (request.uri LIKE '/optimus-manager/rest/getStaticData')",
       "critical_val": 5,
       "warning_val": 3,
