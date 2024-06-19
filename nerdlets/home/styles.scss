@@ -96,3 +96,6 @@ a:not(.u-unstyledLink):not(.wnd-Link--external) {
   -webkit-font-smoothing: antialiased !important; 
   -moz-osx-font-smoothing: grayscale !important; 
 }
+.custom-modal{
+  transform: translateX(-35px);
+}

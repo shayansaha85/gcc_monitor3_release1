@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { Button, Container, ListGroup, ProgressBar } from "react-bootstrap";
 import Card from "react-bootstrap/Card";
 import Col from "react-bootstrap/Col";
@@ -27,17 +27,35 @@ const EMDMH = ({
         progressCountStatus: [],
     });
 
+    const [queryTimestamp, setQueryTimestamp] = useState(Date.now());
     const [userData_Custom_Metric, setUserData_Custom_Metric] = useState({});
+    const queryInProgress = useRef(false);
+
+
+    useEffect(() => {
+        const intervalId = setInterval(() => {
+            setQueryTimestamp(Date.now());
+        }, 10000);
+
+        return () => clearInterval(intervalId);
+    }, []);
+
 
     useEffect(() => {
         query_Metrices();
-    }, [timeUpdater]);
+    }, [queryTimestamp]);
+
+
 
     const formatValue = (value) => {
         return typeof value === "number" ? value.toFixed(3) : value;
     };
 
+
     const query_Metrices = async () => {
+
+        queryInProgress.current = true;
+
         for (const [metricKey, metricVal] of Object.entries(metrics)) {
             try {
                 let parseValue, results, parse_warning, result_warning, previousResults;
@@ -107,7 +125,6 @@ const EMDMH = ({
                             comparison: metricVal.comparison,
                         },
                     }));
-
                 }
                 if (metricKey === 'metric1') {
                     const regex = /'([^']+)'/g;
@@ -131,6 +148,8 @@ const EMDMH = ({
             } catch (error) {
                 console.error(`Error processing metric ${metricKey}: ${error.message}`);
             }
+
+            queryInProgress.current = false;
         }
     };
 
@@ -298,9 +317,9 @@ const EMDMH = ({
                                                             <Tooltip>
                                                                 {
                                                                     <div>
-                                                                        Warning Alerts: {metricVal?.critical?.current ? metricVal?.critical?.current : 0}
+                                                                        Critical Alerts: {metricVal?.critical?.current ? metricVal?.critical?.current : 0}
                                                                         <br />
-                                                                        Critical Alerts: {metricVal?.warning?.current ? metricVal?.warning?.current : 0}
+                                                                        Warning Alerts: {metricVal?.warning?.current ? metricVal?.warning?.current : 0}
                                                                     </div>
                                                                 }
                                                             </Tooltip>
