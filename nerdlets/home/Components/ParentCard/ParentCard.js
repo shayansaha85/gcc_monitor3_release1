@@ -95,7 +95,7 @@ const ParentCard = () => {
 
     return (
         <div style={{ maxWidth: "100%" }}>
-            <div style={{ maxWidth: "95rem", margin: "auto" }}>
+            <div style={{ maxWidth: "95%", margin: "auto" }}>
                 <div>
                     <Row >
                         <Col>
@@ -106,24 +106,22 @@ const ParentCard = () => {
                         </Col>
                     </Row>
                 </div>
-                <div>
-                    <Row xs={1} sm={2} md={2} lg={3} xl={3} >
-                        {
+                <div style={{ display: 'grid', gap: '1rem', gridTemplateColumns: 'repeat(auto-fill,minmax(440px,1fr))', justifyContent: 'center' }}>
+                    {
 
-                            filteredCardList_custom_state?.map(e =>
-                                <EMDMH
-                                    key={e.project}
-                                    cardName={e.project}
-                                    timeUpdater={timeUpdater}
-                                    guid={'Mjc4MTY2N3xOUjF8V09SS0xPQUR8MjE1MzQw'}
-                                    metrics={e.metrics}
-                                    headingColor={e.workloadValue}
-                                    hyperlink={e.workloadUrl}
-                                />
-                            )
-                        }
+                        filteredCardList_custom_state?.map(e =>
+                            <EMDMH
+                                key={e.project}
+                                cardName={e.project}
+                                timeUpdater={timeUpdater}
+                                guid={'Mjc4MTY2N3xOUjF8V09SS0xPQUR8MjE1MzQw'}
+                                metrics={e.metrics}
+                                headingColor={e.workloadValue}
+                                hyperlink={e.workloadUrl}
+                            />
+                        )
+                    }
 
-                    </Row>
                 </div>
             </div>
         </div>
@@ -132,7 +130,6 @@ const ParentCard = () => {
 
 export default ParentCard;
 
-{/* <CardList cardName={cardName} timeUpdater={timeUpdater} guid={'Mjc4MTY2N3xOUjF8V09SS0xPQUR8MTQxMDM0'} /> */ }
 
 
 // Function to make a NerdGraph query

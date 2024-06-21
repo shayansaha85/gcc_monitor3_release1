@@ -21,6 +21,10 @@ a {
 margin: 0rem 5rem;
 }
 
+.nav-bar-text{
+  font-weight: 800;
+  margin-right: 3.5rem;
+}
 .aprtTwoItem {
   display: flex;
   justify-content: space-between;
@@ -101,3 +105,33 @@ a:not(.u-unstyledLink):not(.wnd-Link--external) {
 .custom-modal{
   transform: translateX(-35px);
 }
+
+
+/* toaster */
+
+.toast-custom {
+  background-color: #e9ecef; 
+  color: #343a40; 
+  border-radius: 0.5rem; 
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15); 
+  overflow: hidden;
+}
+
+.toast-custom .toast-header {
+  background-color: #dee2e6; 
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1); 
+}
+
+.toast-custom .toast-header strong {
+  color: #343a40; 
+}
+
+.toast-custom .toast-header small {
+  color: #6c757d; 
+}
+
+.toast-custom .toast-body {
+  padding: 1rem; 
+  font-size: 1rem;
+}
+
