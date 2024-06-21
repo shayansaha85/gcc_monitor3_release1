@@ -826,7 +826,7 @@
     "metric3": {
       "accountId": "2781667",
       "name": "Synthetic Availability (%)",
-      "query": "FROM SyntheticCheck SELECT percentage(count(*), WHERE result='SUCCESS') WHERE monitorName IN ('209927-Hybris Services CPQ COLO-Production - Login')",
+      "query": "FROM SyntheticCheck SELECT percentage(count(*), WHERE result='SUCCESS') WHERE monitorName IN ('209927-Hybris Services CPQ COLO-Production_Legal_Quote_Creation-HPE Employee Login')",
       "critical_val": 95,
       "warning_val": 99,
       "comparison": "L"
