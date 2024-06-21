@@ -25,15 +25,16 @@ function Toaster() {
                 style={{
                     position: 'absolute',
                     top: 0,
-                    right: '5rem',
+                    right: '46%',
                     zIndex: 1050,
+                   
                 }}
             >
                 <Toast show={showToaster} animation={true} style={{ minWidth: '250px' }} className="toast-custom">
-                    <Toast.Header closeButton={false}>
-                        <strong className="me-auto">Notification</strong>
-                    </Toast.Header>
-                    <Toast.Body>Refreshing</Toast.Body>
+                    {/* <Toast.Header closeButton={false}>
+                        <strong className="me-auto"> </strong>
+                    </Toast.Header> */}
+                    <Toast.Body><strong>Refreshing...</strong></Toast.Body>
                 </Toast>
             </div>
         </div>
