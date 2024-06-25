@@ -35,7 +35,7 @@ function AlertTable({ isOpen, handleClose, alertData }) {
             const response = await fetchNerdGraphQuery(`{
          actor {
            account(id: 2781667) {
-             nrql(query: "${alertData.ticketTable}") {
+             nrql(query: "${alertData.ticketTable} SINCE ${timeUpdater} AGO") {
                embeddedChartUrl
                nrql
                otherResult
