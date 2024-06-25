@@ -125,7 +125,8 @@ const EMDMH = ({
                             critical_val: metricVal.critical_val,
                             warning_val: metricVal.warning_val,
                             comparison: metricVal.comparison,
-                            ticketTable: metricVal.ticketTable
+                            ticketTable: metricVal.ticketTable,
+                            accountId: metricVal.accountId
                         },
                     }));
                 }
@@ -319,7 +320,7 @@ const EMDMH = ({
                                             <Col sm={4} className="text-center">
                                                 {metricKey === "metric8" ? (
                                                     <>
-                                                        <AlertTable isOpen={isModalOpen} handleClose={alertModalHandler} alertData={metricVal} />
+                                                        <AlertTable isOpen={isModalOpen} handleClose={alertModalHandler} alertData={metricVal} timeSeries={timeUpdater} />
                                                         <span style={{ cursor: "pointer" }} onClick={alertModalHandler}>
                                                             {(metricVal?.critical?.current !== 0 || metricVal?.warning?.current !== 0) ?
                                                                 (metricVal?.critical?.current + metricVal?.warning?.current).toFixed(0) : 'NA'}

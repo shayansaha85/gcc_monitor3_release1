@@ -4,7 +4,7 @@ import Modal from 'react-bootstrap/Modal';
 import { NerdGraphQuery } from "nr1";
 
 
-function AlertTable({ isOpen, handleClose, alertData }) {
+function AlertTable({ isOpen, handleClose, alertData, timeSeries }) {
 
     const [tableData, setTableData] = useState(null)
     const [columnWidths, setColumnWidths] = useState([100, 100, 100, 100, 100]);
@@ -16,7 +16,7 @@ function AlertTable({ isOpen, handleClose, alertData }) {
 
 
     useEffect(() => {
-        fetch_NerdGraph_Query_Result()
+        fetch_NerdGraph_Query_Result();
     }, [isOpen])
 
     const totalPages = tableData ? Math.ceil(tableData.length / rowsPerPage) : 1;
@@ -31,11 +31,12 @@ function AlertTable({ isOpen, handleClose, alertData }) {
 
 
     const fetch_NerdGraph_Query_Result = async () => {
+
         try {
             const response = await fetchNerdGraphQuery(`{
          actor {
-           account(id: 2781667) {
-             nrql(query: "${alertData.ticketTable} SINCE ${timeUpdater} AGO") {
+           account(id: ${alertData.accountId}) {
+             nrql(query: "${alertData.ticketTable} SINCE ${timeSeries} AGO") {
                embeddedChartUrl
                nrql
                otherResult

@@ -8,7 +8,7 @@ function Toaster() {
         const interval = setInterval(() => {
             setShowToaster(true);
             setTimeout(() => setShowToaster(false), 2000);
-        }, 10000);
+        }, 30000);
 
         return () => clearInterval(interval);
     }, []);
@@ -27,14 +27,14 @@ function Toaster() {
                     top: 0,
                     right: '46%',
                     zIndex: 1050,
-                   
+
                 }}
             >
                 <Toast show={showToaster} animation={true} style={{ minWidth: '250px' }} className="toast-custom">
                     {/* <Toast.Header closeButton={false}>
                         <strong className="me-auto"> </strong>
                     </Toast.Header> */}
-                    <Toast.Body><strong>Refreshing...</strong></Toast.Body>
+                    <Toast.Body><strong>Refresh Rate : 30 seconds</strong></Toast.Body>
                 </Toast>
             </div>
         </div>
