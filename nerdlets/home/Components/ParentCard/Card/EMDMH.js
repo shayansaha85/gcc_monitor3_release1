@@ -125,6 +125,7 @@ const EMDMH = ({
                             critical_val: metricVal.critical_val,
                             warning_val: metricVal.warning_val,
                             comparison: metricVal.comparison,
+                            ticketTable: metricVal.ticketTable
                         },
                     }));
                 }

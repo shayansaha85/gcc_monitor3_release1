@@ -357,6 +357,7 @@
       "name": "Alerts",
       "criticalAlert": "FROM NrAiIncident SELECT count(*) WHERE entity.name = '210135-Partner Ready Portal (PRP)-Production' AND event = 'open' AND priority = 'critical'",
       "warningAlert": "FROM NrAiIncident SELECT count(*) WHERE entity.name = '210135-Partner Ready Portal (PRP)-Production' AND event = 'open' AND priority = 'warning'",
+      "ticketTable": "FROM NrAiIncident SELECT title, priority, incidentLink WHERE entity.name = '210135-Partner Ready Portal (PRP)-Production' SINCE 7 days ago",
       "critical_val": 5,
       "warning_val": 3,
       "comparison": "G"

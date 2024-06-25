@@ -8,12 +8,26 @@ function AlertTable({ isOpen, handleClose, alertData }) {
 
     const [tableData, setTableData] = useState(null)
     const [columnWidths, setColumnWidths] = useState([100, 100, 100, 100, 100]);
+    const [currentPage, setCurrentPage] = useState(1);
+    const rowsPerPage = 5;
+
     const tableRef = useRef(null);
+
+
 
     useEffect(() => {
         fetch_NerdGraph_Query_Result()
     }, [isOpen])
 
+    const totalPages = tableData ? Math.ceil(tableData.length / rowsPerPage) : 1;
+
+    const handlePageChange = (page) => {
+        if (page > 0 && page <= totalPages) {
+            setCurrentPage(page);
+        }
+    };
+
+    const currentData = tableData ? tableData.slice((currentPage - 1) * rowsPerPage, currentPage * rowsPerPage) : [];
 
 
     const fetch_NerdGraph_Query_Result = async () => {
@@ -21,7 +35,7 @@ function AlertTable({ isOpen, handleClose, alertData }) {
             const response = await fetchNerdGraphQuery(`{
          actor {
            account(id: 2781667) {
-             nrql(query: "FROM NrAiIncident SELECT title, priority, incidentLink WHERE entity.name = '210135-Partner Ready Portal (PRP)-Production' SINCE 7 DAYS AGO") {
+             nrql(query: "${alertData.ticketTable}") {
                embeddedChartUrl
                nrql
                otherResult
@@ -97,18 +111,31 @@ function AlertTable({ isOpen, handleClose, alertData }) {
                             </tr>
                         </thead>
                         <tbody>
-                            {
-                                tableData?.map((e, index) => (
+                            {currentData.length > 0 ?
+                                currentData?.map((e, index) => (
                                     <tr key={index}>
                                         <td>{e.title}</td>
                                         <td className={e.priority === 'warning' ? 'warning-alert warning-font' : 'critical-alert critical-font'}>{e.priority}</td>
                                         <td>{new Date(e.timestamp).toLocaleString()}</td>
-                                        <td><a href={e.incidentLink} target="_blank" rel="noopener noreferrer">{e.incidentLink}</a></td>
+                                        <td ><a href={e.incidentLink} target="_blank" rel="noopener noreferrer" >{e.incidentLink}</a></td>
                                     </tr>
-                                ))
+                                )) : (
+                                    <tr>
+                                        <td colSpan="4" className="no-data text-center">No Data Found</td>
+                                    </tr>
+                                )
                             }
                         </tbody>
                     </table>
+                    <div className="pagination">
+                        <button onClick={() => handlePageChange(currentPage - 1)} disabled={currentPage === 1}>
+                            {'<<'}
+                        </button>
+                        <span>{currentPage} of {totalPages}</span>
+                        <button onClick={() => handlePageChange(currentPage + 1)} disabled={currentPage === totalPages}>
+                            {'>>'}
+                        </button>
+                    </div>
                 </Modal.Body>
             </Container>
         </Modal>
