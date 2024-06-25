@@ -14,6 +14,8 @@ import { faCaretDown } from "@fortawesome/free-solid-svg-icons";
 
 // nerdGraph
 import { NerdGraphQuery } from "nr1";
+import AlertTable from "./Alert/AlertTable";
+import Modalbox from "../../Modal/Modalbox";
 
 const EMDMH = ({
     cardName,
@@ -30,7 +32,7 @@ const EMDMH = ({
     const [queryTimestamp, setQueryTimestamp] = useState(Date.now());
     const [userData_Custom_Metric, setUserData_Custom_Metric] = useState({});
     const queryInProgress = useRef(false);
-
+    const [isModalOpen, setIsModalOpen] = useState(false);
 
     useEffect(() => {
         const intervalId = setInterval(() => {
@@ -268,100 +270,95 @@ const EMDMH = ({
         }
     };
 
+    const alertModalHandler = () => {
+        setIsModalOpen(!isModalOpen)
+    }
+
 
     return (
-        <Card style={{ maxHeight: "100%" }} border="dark">
-            <Card.Header className={`${deafultHeadingColor} smaller-font`}>
-                <a
-                    href={hyperlink}
-                    target="_blank"
-                >
-                    {cardName}
-                </a>
-            </Card.Header>
-            <Card.Body>
-                <Card.Title>
-                    <div style={{ display: "flex", alignItems: "center" }}>
-                        <ProgressBar style={{ width: "60%" }}>
-                            {progressBarUI}
-                        </ProgressBar>
-                        <p style={{ marginLeft: "10px", marginBottom: "0px" }}>
-                            {" "}
-                            Host Status for 3h{" "}
-                        </p>
-                    </div>
-                </Card.Title>
-                <Card.Text>
-                    <ListGroup variant="flush">
-                        {Object.entries(userData_Custom_Metric).map(
-                            ([metricKey, metricVal]) => (
-                                <ListGroup.Item
-                                    className="listItemCustomPadding"
-                                    key={metricKey}
-                                >
-                                    <Row>
-                                        <Col sm={7} style={metricVal.name.length > 35 ? { fontSize: "0.8rem" } : metricVal.name.length > 27 ? { fontSize: "0.9rem" } : {}}> {metricVal.name} </Col>
-                                        <Col sm={1}>
-                                            <FontAwesomeIcon
-                                                icon={(metricKey === 'metric1' || metricKey === 'metric8') ? faCaretUp : metricVal.current > metricVal.previous ? faCaretUp : faCaretDown}
-                                                size="2x"
-                                                className={(metricKey === 'metric1' || metricKey === 'metric8') ? 'green' : getClassNameForPages(metricVal)}
-                                            />
-                                        </Col>
-                                        <Col sm={4} className="text-center">
-                                            {metricKey === "metric8" ? (
-                                                <OverlayTrigger
-                                                    placement="top"
-                                                    overlay={
-                                                        <Tooltip>
-                                                            {
-                                                                <div>
-                                                                    Critical Alerts: {metricVal?.critical?.current ? metricVal?.critical?.current : 0}
-                                                                    <br />
-                                                                    Warning Alerts: {metricVal?.warning?.current ? metricVal?.warning?.current : 0}
-                                                                </div>
-                                                            }
-                                                        </Tooltip>
-                                                    }
-                                                >
+        <>
+            <Card style={{ maxHeight: "100%" }} border="dark">
+                <Card.Header className={`${deafultHeadingColor} smaller-font`}>
+                    <a
+                        href={hyperlink}
+                        target="_blank"
+                    >
+                        {cardName}
+                    </a>
+                </Card.Header>
+                <Card.Body>
+                    <Card.Title>
+                        <div style={{ display: "flex", alignItems: "center" }}>
+                            <ProgressBar style={{ width: "60%" }}>
+                                {progressBarUI}
+                            </ProgressBar>
+                            <p style={{ marginLeft: "10px", marginBottom: "0px" }}>
+                                {" "}
+                                Host Status for 3h{" "}
+                            </p>
+                        </div>
+                    </Card.Title>
+                    <Card.Text>
+                        <ListGroup variant="flush">
+                            {Object.entries(userData_Custom_Metric).map(
+                                ([metricKey, metricVal]) => (
+                                    <ListGroup.Item
+                                        className="listItemCustomPadding"
+                                        key={metricKey}
+                                    >
+                                        <Row>
+                                            <Col sm={7} style={metricVal.name.length > 35 ? { fontSize: "0.8rem" } : metricVal.name.length > 27 ? { fontSize: "0.9rem" } : {}}> {metricVal.name} </Col>
+                                            <Col sm={1}>
+                                                <FontAwesomeIcon
+                                                    icon={(metricKey === 'metric1' || metricKey === 'metric8') ? faCaretUp : metricVal.current > metricVal.previous ? faCaretUp : faCaretDown}
+                                                    size="2x"
+                                                    className={(metricKey === 'metric1' || metricKey === 'metric8') ? 'green' : getClassNameForPages(metricVal)}
+                                                />
+                                            </Col>
+                                            <Col sm={4} className="text-center">
+                                                {metricKey === "metric8" ? (
+                                                    <>
+                                                        <AlertTable isOpen={isModalOpen} handleClose={alertModalHandler} alertData={metricVal} />
+                                                        <span style={{ cursor: "pointer" }} onClick={alertModalHandler}>
+                                                            {(metricVal?.critical?.current !== 0 || metricVal?.warning?.current !== 0) ?
+                                                                (metricVal?.critical?.current + metricVal?.warning?.current).toFixed(0) : 'NA'}
+                                                        </span>
+                                                    </>
+                                                ) : metricKey === "metric1" ? (
                                                     <span style={{ cursor: "pointer" }}>
-                                                        {(metricVal?.critical?.current !== 0 || metricVal?.warning?.current !== 0) ?
-                                                            (metricVal?.critical?.current + metricVal?.warning?.current).toFixed(0) : 'NA'}
+                                                        {metricVal?.current}
                                                     </span>
-                                                </OverlayTrigger>
-                                            ) : metricKey === "metric1" ? (
-                                                <span style={{ cursor: "pointer" }}>
-                                                    {metricVal?.current}
-                                                </span>
-                                            ) : (
-                                                <OverlayTrigger
-                                                    placement="top"
-                                                    overlay={
-                                                        <Tooltip>
-                                                            {
-                                                                <div>
-                                                                    Warning : {metricVal?.current ? metricVal?.warning_val : 0}
-                                                                    <br />
-                                                                    Critical : {metricVal?.current ? metricVal?.critical_val : 0}
-                                                                </div>
-                                                            }
-                                                        </Tooltip>
-                                                    }
-                                                >
-                                                    <span style={{ cursor: "pointer" }}>
-                                                        {metricVal ? (metricVal.current ? metricVal.current : "NA") : "Loading..."}
-                                                    </span>
-                                                </OverlayTrigger>
-                                            )}
-                                        </Col>
-                                    </Row>
-                                </ListGroup.Item>
-                            ),
-                        )}
-                    </ListGroup>
-                </Card.Text>
-            </Card.Body>
-        </Card>
+                                                ) : (
+                                                    <OverlayTrigger
+                                                        placement="top"
+                                                        overlay={
+                                                            <Tooltip>
+                                                                {
+                                                                    <div>
+                                                                        Warning : {metricVal?.current ? metricVal?.warning_val : 0}
+                                                                        <br />
+                                                                        Critical : {metricVal?.current ? metricVal?.critical_val : 0}
+                                                                    </div>
+                                                                }
+                                                            </Tooltip>
+                                                        }
+                                                    >
+                                                        <span style={{ cursor: "pointer" }} >
+                                                            {metricVal ? (metricVal.current ? metricVal.current : "NA") : "Loading..."}
+                                                        </span>
+                                                    </OverlayTrigger>
+                                                )}
+                                            </Col>
+                                        </Row>
+                                    </ListGroup.Item>
+                                ),
+                            )}
+                        </ListGroup>
+                    </Card.Text>
+                </Card.Body>
+            </Card>
+
+        </>
     );
 };
 
