@@ -20,25 +20,25 @@ function Modalbox() {
                 </Modal.Header>
                 <Modal.Body>
                     <p>
-                        <strong>Infrastructure Health:</strong>   Latest status value of the workload where all infrastructure hosts are added for each application/user journey.
+                        <strong>  Metric #1 Infrastructure Health:</strong> Latest status value of the workload where all infrastructure hosts are added for each application/user journey.
                     </p>
                     <p>
-                        <strong>  Response Time: </strong> Overall response time of the application/user journey in seconds.
+                        <strong>  Metric #2 Response Time:</strong> Overall response time of the application/user journey in seconds.
                     </p>
                     <p>
-                        <strong>   Synthetic Availability:</strong> Percentage of synthetic check passed for the synthetic scripts allotted for each application/user journey.
+                        <strong>  Metric #3 Synthetic Availability:</strong> Percentage of synthetic check passed for the synthetic scripts allotted for each application/user journey.
                     </p>
                     <p>
-                        <strong>  End User Performance (Also known as “apdex”):</strong> Apdex value for each application/user journey taken from Browser data.
+                        <strong>  Metric #4 End User Performance (Also known as “apdex”):</strong> Apdex is a simplified Service Level Agreement (SLA) solution that helps you see how satisfied users are with your application. An Apdex score varies from 0 to 1, with 0 as the worst possible score (100% of response times were Frustrated), and 1 as the best possible score (100% of response times were Satisfied).
                     </p>
                     <p>
-                        <strong>  Custom Metrics #1:</strong> Custom metrics based on client requirement. It can be either response time (in seconds) for any API or any specific synthetic script availability.
+                        <strong> Metric #5:</strong>This metric varies application to application and is configurable as per requirements like response time (sec) for critical transactions/API or URL availability (%).
                     </p>
                     <p>
-                        <strong>  Custom Metrics #2:</strong> Custom metrics based on client requirement. It can be either response time (in seconds) for any API or any specific synthetic script availability.
+                        <strong>  Metric #6:</strong> This metric varies application to application and is configurable as per requirements like response time (sec) for critical transactions/API or URL availability (%).
                     </p>
                     <p>
-                        <strong>  Custom Metrics #3:</strong> Custom metrics based on client requirement. It can be either response time (in seconds) for any API or any specific synthetic script availability.
+                        <strong>  Metric #7:</strong> This metric varies application to application and is configurable as per requirements like response time (sec) for critical transactions/API or URL availability (%).
                     </p>
                     <p>
                         <strong>  Alerts:</strong> Total number of open alerts for the application/user journey.
