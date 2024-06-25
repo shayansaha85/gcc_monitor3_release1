@@ -118,7 +118,7 @@ function AlertTable({ isOpen, handleClose, alertData, timeSeries }) {
                                         <td>{e.title}</td>
                                         <td className={e.priority === 'warning' ? 'warning-alert warning-font' : 'critical-alert critical-font'}>{e.priority}</td>
                                         <td>{new Date(e.timestamp).toLocaleString()}</td>
-                                        <td ><a href={e.incidentLink} target="_blank" rel="noopener noreferrer" >{e.incidentLink}</a></td>
+                                        <td ><a href={e.incidentLink} target="_blank" rel="noopener noreferrer" className='td_a_link' >{e.incidentLink}</a></td>
                                     </tr>
                                 )) : (
                                     <tr>
