@@ -80,7 +80,12 @@ function AlertTable({ isOpen, handleClose, alertData, timeSeries }) {
     };
 
     return (
-        <Modal show={isOpen} onHide={handleClose} size="lg">
+        <Modal show={isOpen} onHide={() => {
+            handleClose()
+            setCurrentPage(1)
+        }} size="lg">
+            <Modal.Header className='custom-modal-header' closeButton>
+            </Modal.Header>
             <Container fluid className="alert-container">
                 <Row className='m-0'>
                     <Col xs={12} md={6} className="p-2 alert-box critical-alert">
@@ -128,7 +133,7 @@ function AlertTable({ isOpen, handleClose, alertData, timeSeries }) {
                             }
                         </tbody>
                     </table>
-                    <div className="pagination">
+                    {currentData.length > 0 ? <div className="pagination">
                         <button onClick={() => handlePageChange(currentPage - 1)} disabled={currentPage === 1}>
                             {'<<'}
                         </button>
@@ -136,7 +141,7 @@ function AlertTable({ isOpen, handleClose, alertData, timeSeries }) {
                         <button onClick={() => handlePageChange(currentPage + 1)} disabled={currentPage === totalPages}>
                             {'>>'}
                         </button>
-                    </div>
+                    </div> : ''}
                 </Modal.Body>
             </Container>
         </Modal>
