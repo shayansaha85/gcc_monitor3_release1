@@ -34,7 +34,7 @@ function Toaster() {
                     {/* <Toast.Header closeButton={false}>
                         <strong className="me-auto"> </strong>
                     </Toast.Header> */}
-                    <Toast.Body><strong>Refresh Rate : 30 seconds</strong></Toast.Body>
+                    <Toast.Body><strong>Refreshing...</strong></Toast.Body>
                 </Toast>
             </div>
         </div>

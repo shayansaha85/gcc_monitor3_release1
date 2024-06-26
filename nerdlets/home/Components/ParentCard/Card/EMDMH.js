@@ -321,7 +321,7 @@ const EMDMH = ({
                                                 {metricKey === "metric8" ? (
                                                     <>
                                                         <AlertTable isOpen={isModalOpen} handleClose={alertModalHandler} alertData={metricVal} timeSeries={timeUpdater} />
-                                                        <span style={{ cursor: "pointer" }} onClick={alertModalHandler}>
+                                                        <span style={{ cursor: "pointer", textDecoration: "underline"}} onClick={alertModalHandler}>
                                                             {(metricVal?.critical?.current !== 0 || metricVal?.warning?.current !== 0) ?
                                                                 (metricVal?.critical?.current + metricVal?.warning?.current).toFixed(0) : 'NA'}
                                                         </span>

@@ -14,7 +14,7 @@ function TopBar() {
                         <Navbar.Text>
                             <div className='d-inline nav-bar-text rounded'>
                                 <p className='text-nowrap d-inline '>
-                                    Data Refresh Rate 10 seconds
+                                   Refresh Rate : 30 seconds
                                 </p>
                             </div>
                             <Modalbox />
