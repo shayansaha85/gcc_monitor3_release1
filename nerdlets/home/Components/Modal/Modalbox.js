@@ -14,7 +14,7 @@ function Modalbox() {
         <>
             <FontAwesomeIcon icon={faCircleInfo} style={{ fontSize: '20px', cursor: 'pointer' }} onClick={handleShow} />
 
-            <Modal show={show} onHide={handleClose} className='custom-modal'>
+            <Modal show={show} onHide={handleClose} size="lg" className='custom-modal'>
                 <Modal.Header closeButton>
                     <Modal.Title>About Attributes</Modal.Title>
                 </Modal.Header>
