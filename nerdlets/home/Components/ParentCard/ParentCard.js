@@ -16,10 +16,24 @@ const ParentCard = () => {
     const [timeUpdater, setTimeUpdater] = useState('5 Minutes')
     const [searchTerm, setSearchTerm] = useState('');
     const [filteredCardList_custom_state, setFilteredList_Custom] = useState()
+    const [queryTimestamp, setQueryTimestamp] = useState(Date.now());
 
     let list_of_sortedCards;
 
+    useEffect(() => {
+        const intervalId = setInterval(() => {
+            setQueryTimestamp(Date.now());
+        }, 30000);
+        return () => clearInterval(intervalId);
+    }, []);
+
+
     useEffect(async () => {
+        workloadRefresh()
+
+    }, [searchTerm, timeUpdater, queryTimestamp]);
+
+    const workloadRefresh = async () => {
 
         const filteredCardList_custom = Object.keys(appsList).filter((metricKey) =>
             metricKey.toLowerCase().includes(searchTerm.toLowerCase())
@@ -49,9 +63,7 @@ const ParentCard = () => {
         });
 
         setFilteredList_Custom(sortedCards)
-
-    }, [searchTerm, timeUpdater]);
-
+    }
 
     // const filteredCardList = Object.keys(appsList).filter((metricKey) =>
     //     metricKey.toLowerCase().includes(searchTerm.toLowerCase())

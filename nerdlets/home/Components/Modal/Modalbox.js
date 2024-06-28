@@ -16,7 +16,7 @@ function Modalbox() {
 
             <Modal show={show} onHide={handleClose} size="lg" className='custom-modal'>
                 <Modal.Header closeButton>
-                    <Modal.Title>About Attributes</Modal.Title>
+                    <Modal.Title>Help</Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
                     <h5 style={{ fontWeight: 'bold' }}>About Attributes</h5>

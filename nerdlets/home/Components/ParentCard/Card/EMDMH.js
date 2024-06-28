@@ -37,7 +37,7 @@ const EMDMH = ({
     useEffect(() => {
         const intervalId = setInterval(() => {
             setQueryTimestamp(Date.now());
-        }, 10000);
+        }, 30000);
 
         return () => clearInterval(intervalId);
     }, []);

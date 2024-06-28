@@ -1,7 +1,7 @@
 {
   "schemaType": "LAUNCHER",
   "id": "launcher",
-  "displayName": "GCC Monitor 3 - Tier 1 Apps & User Journey V2",
+  "displayName": "GCC Monitor 3 - Tier 1 Apps & User Journey",
   "description": "Describe me",
-  "rootNerdletId": "9f535773-02c9-4c6a-a26f-db1126212540.home"
+  "rootNerdletId": "d30aecbf-d228-44bd-b01f-c680a3abb0f9.home"
 }
