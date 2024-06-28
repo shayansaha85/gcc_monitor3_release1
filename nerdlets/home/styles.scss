@@ -106,7 +106,10 @@ a:not(.u-unstyledLink):not(.wnd-Link--external) {
   transform: translateX(-35px);
 }
 
-
+.custom-modal .modal-content{
+  max-height: 90vh;
+  overflow-y: auto;
+}
 /* toaster */
 .toast-custom {
   background-color: #e9ecef; 
