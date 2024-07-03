@@ -17,26 +17,3 @@ const HomeNerdlet = () => {
 export default HomeNerdlet;
 
 
-/* 
-{
-  actor {
-    user {
-      name
-    }
-    account(id: 2781667) {
-      nrql(
-        query: "SELECT average(duration) as  '' from Transaction where appName = '210135-Partner Ready Portal (PRP)-Production' SINCE 5 MINUTES AGO"
-        timeout: 5
-      ) {
-        embeddedChartUrl
-        nrql
-        otherResult
-        rawResponse
-        staticChartUrl
-        totalResult
-      }
-    }
-  }
-}
-
-*/

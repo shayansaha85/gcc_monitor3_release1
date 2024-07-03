@@ -53,109 +53,133 @@ const EMDMH = ({
         return typeof value === "number" ? value.toFixed(3) : value;
     };
 
-
     const query_Metrices = async () => {
+        if (queryInProgress.current) {
+            return;
+        }
 
-        queryInProgress.current = true;
+        try {
+            queryInProgress.current = true;
 
-        for (const [metricKey, metricVal] of Object.entries(metrics)) {
-            try {
-                let parseValue, results, parse_warning, result_warning, previousResults;
+            const resolved_Results = await Promise.all(
+                Object.entries(metrics).map(async ([metricKey, metricVal]) => {
 
-                if (metricVal.query && metricVal.name !== "WorkLoad") {
-                    parseValue = await fetch_NerdGraph_Query_Result(metricVal.query, metricVal.accountId);
-                    results =
-                        parseValue.actor.account.nrql.rawResponse.current.results[0].latest ??
-                        parseValue.actor.account.nrql.rawResponse.current.results[0].average ??
-                        parseValue.actor.account.nrql.rawResponse.current.results[0].result ??
-                        parseValue.actor.account.nrql.rawResponse.current.results[0].score ??
-                        parseValue.actor.account.nrql.rawResponse.current.results[0].count;
-
-                    previousResults =
-                        parseValue.actor.account.nrql.rawResponse.previous.results[0].latest ??
-                        parseValue.actor.account.nrql.rawResponse.previous.results[0].average ??
-                        parseValue.actor.account.nrql.rawResponse.previous.results[0].result ??
-                        parseValue.actor.account.nrql.rawResponse.previous.results[0].score ??
-                        parseValue.actor.account.nrql.rawResponse.previous.results[0].count;
-
-                    setUserData_Custom_Metric((prevState) => ({
-                        ...prevState,
-                        [metricKey]: {
-                            name: metricVal.name,
-                            current: formatValue(results),
-                            previous: formatValue(previousResults),
-                            critical_val: metricVal.critical_val,
-                            warning_val: metricVal.warning_val,
-                            comparison: metricVal.comparison,
-                        },
-                    }));
-                }
-                if (metricKey === 'metric8') {
-                    parseValue = await fetch_NerdGraph_Query_Result(
-                        metricVal.criticalAlert, metricVal.accountId
-                    );
-                    parse_warning = await fetch_NerdGraph_Query_Result(
-                        metricVal.warningAlert, metricVal.accountId
-                    );
-
-                    results =
-                        parseValue.actor.account.nrql.rawResponse.current.results[0].count;
-                    previousResults =
-                        parseValue.actor.account.nrql.rawResponse.previous.results[0].count;
-
-                    result_warning =
-                        parse_warning.actor.account.nrql.rawResponse.current.results[0]
-                            .count;
-                    const previous_warning =
-                        parse_warning.actor.account.nrql.rawResponse.previous.results[0]
-                            .count;
-
-                    setUserData_Custom_Metric((prevState) => ({
-                        ...prevState,
-                        [metricKey]: {
-                            name: metricVal.name,
-                            critical: {
-                                current: results,
-                                previous: previousResults,
-                            },
-                            warning: {
-                                current: result_warning,
-                                previous: previous_warning,
-                            },
-                            critical_val: metricVal.critical_val,
-                            warning_val: metricVal.warning_val,
-                            comparison: metricVal.comparison,
-                            ticketTable: metricVal.ticketTable,
-                            accountId: metricVal.accountId
-                        },
-                    }));
-                }
-                if (metricKey === 'metric1') {
-                    const regex = /'([^']+)'/g;
-
-                    const entityNames = [];
-                    let match;
-
-                    // Extract entity names from the query string
-                    while ((match = regex.exec(metricVal.query)) !== null) {
-                        entityNames.push(match[1]);
+                    if (metricVal.query && metricVal.name !== "WorkLoad") {
+                        return processMetric(metricKey, metricVal);
                     }
 
-                    const resolvedProgress = await fetch_NerdGraph_Query_Progress(entityNames, metricVal.accountId)
+                    if (metricKey === "metric8") {
+                        return processMetric8(metricKey, metricVal);
+                    }
 
-                    let progressCountOccurance = getOccuranceObject(resolvedProgress);
-                    let progressCount = formatObject(progressCountOccurance);
+                    return { metricKey };
+                })
+            );
+
+            resolved_Results.forEach(({ metricKey, metricData, progressCount }) => {
+                if (metricData) {
+                    setUserData_Custom_Metric((prevState) => ({
+                        ...prevState,
+                        [metricKey]: metricData,
+                    }));
+                }
+
+                if (progressCount) {
                     setUserData({
                         progressCountStatus: progressCount,
                     });
                 }
-            } catch (error) {
-                console.error(`Error processing metric ${metricKey}: ${error.message}`);
-            }
-
+            });
+        } catch (error) {
+            console.error(`Error in queryMetrics: ${error.message}`);
+        } finally {
             queryInProgress.current = false;
         }
     };
+
+
+    const processMetric = async (metricKey, metricVal) => {
+        try {
+            const parseValue = await fetch_NerdGraph_Query_Result(metricVal.query, metricVal.accountId);
+
+            const currentResults = parseValue.actor.account.nrql.rawResponse.current.results[0];
+            const previousResults = parseValue.actor.account.nrql.rawResponse.previous.results[0];
+
+            const results = currentResults.latest ?? currentResults.average ?? currentResults.result ?? currentResults.score ?? currentResults.count;
+            const previous = previousResults.latest ?? previousResults.average ?? previousResults.result ?? previousResults.score ?? previousResults.count;
+
+            const metricData = {
+                name: metricVal.name,
+                current: formatValue(results),
+                previous: formatValue(previous),
+                critical_val: metricVal.critical_val,
+                warning_val: metricVal.warning_val,
+                comparison: metricVal.comparison,
+            };
+
+            if (metricVal.critical_val === null && metricVal.warning_val === null) {
+                const regex = /'([^']+)'/g;
+                const entityNames = [];
+                let match;
+
+                while ((match = regex.exec(metricVal.query)) !== null) {
+                    entityNames.push(match[1]);
+                }
+
+                try {
+                    const resolvedProgress = await fetch_NerdGraph_Query_Progress(entityNames, metricVal.accountId);
+                    const progressCountOccurrence = getOccuranceObject(resolvedProgress);
+                    const progressCount = formatObject(progressCountOccurrence);
+                    return { metricKey, metricData, progressCount };
+                } catch (error) {
+                    console.error(`Error processing metric ${metricKey}: ${error.message}`);
+                    return { metricKey, metricData, progressCount: null };
+                }
+            }
+
+            return { metricKey, metricData };
+        } catch (error) {
+            console.error(`Error processing metric ${metricKey}: ${error.message}`);
+            return { metricKey, metricData: null };
+        }
+    };
+
+    const processMetric8 = async (metricKey, metricVal) => {
+        try {
+            const [parseCritical, parseWarning] = await Promise.all([
+                fetch_NerdGraph_Query_Result(metricVal.criticalAlert, metricVal.accountId),
+                fetch_NerdGraph_Query_Result(metricVal.warningAlert, metricVal.accountId),
+            ]);
+
+            const criticalResults = parseCritical.actor.account.nrql.rawResponse.current.results[0].count;
+            const previousCritical = parseCritical.actor.account.nrql.rawResponse.previous.results[0].count;
+            const warningResults = parseWarning.actor.account.nrql.rawResponse.current.results[0].count;
+            const previousWarning = parseWarning.actor.account.nrql.rawResponse.previous.results[0].count;
+
+            const metricData = {
+                name: metricVal.name,
+                critical: {
+                    current: criticalResults,
+                    previous: previousCritical,
+                },
+                warning: {
+                    current: warningResults,
+                    previous: previousWarning,
+                },
+                critical_val: metricVal.critical_val,
+                warning_val: metricVal.warning_val,
+                comparison: metricVal.comparison,
+                ticketTable: metricVal.ticketTable,
+                accountId: metricVal.accountId,
+            };
+
+            return { metricKey, metricData };
+        } catch (error) {
+            console.error(`Error processing metric ${metricKey}: ${error.message}`);
+            return { metricKey, metricData: null };
+        }
+    };
+
 
     const fetch_NerdGraph_Query_Result = async (customQuery, account_id) => {
         try {
@@ -321,7 +345,7 @@ const EMDMH = ({
                                                 {metricKey === "metric8" ? (
                                                     <>
                                                         <AlertTable isOpen={isModalOpen} handleClose={alertModalHandler} alertData={metricVal} timeSeries={timeUpdater} />
-                                                        <span style={{ cursor: "pointer", textDecoration: "underline"}} onClick={alertModalHandler}>
+                                                        <span style={{ cursor: "pointer", textDecoration: "underline" }} onClick={alertModalHandler}>
                                                             {(metricVal?.critical?.current !== 0 || metricVal?.warning?.current !== 0) ?
                                                                 (metricVal?.critical?.current + metricVal?.warning?.current).toFixed(0) : 'NA'}
                                                         </span>
@@ -509,3 +533,5 @@ function HelloWorld({
         </div>
     );
 }
+
+

@@ -65,12 +65,6 @@ const ParentCard = () => {
         setFilteredList_Custom(sortedCards)
     }
 
-    // const filteredCardList = Object.keys(appsList).filter((metricKey) =>
-    //     metricKey.toLowerCase().includes(searchTerm.toLowerCase())
-    // ).reduce((obj, key) => {
-    //     obj[key] = appsList[key];
-    //     return obj;
-    // }, {});
 
     const fetch_NerdGraph_Query_Result = async (customQuery, account_id) => {
         try {
