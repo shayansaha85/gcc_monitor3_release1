@@ -1,13 +1,21 @@
-import React from "react";
-import TopBar from "./Navbar.js";
+import React, { useState } from "react";
+import TopBar from "./Navbar/Navbar.js";
 import ParentCard from "./ParentCard/ParentCard.js";
 
 
 function App() {
+
+
+    const [selectedOption, setSelectedOption] = useState('10000');
+
+    const handleOptionChange = (option) => {
+        setSelectedOption(option);
+    };
+
     return (
         <React.Fragment>
-            <TopBar />
-            <ParentCard />
+            <TopBar onOptionChange={handleOptionChange} />
+            <ParentCard selectedOption={selectedOption} />
         </React.Fragment>
     );
 }

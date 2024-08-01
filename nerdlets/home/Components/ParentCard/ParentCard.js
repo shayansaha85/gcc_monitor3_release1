@@ -11,7 +11,7 @@ import EMDMH from './Card/EMDMH';
 
 import appsList from "../../../app_data.json";
 
-const ParentCard = () => {
+const ParentCard = ({ selectedOption }) => {
 
     const [timeUpdater, setTimeUpdater] = useState('5 Minutes')
     const [searchTerm, setSearchTerm] = useState('');
@@ -23,18 +23,16 @@ const ParentCard = () => {
     useEffect(() => {
         const intervalId = setInterval(() => {
             setQueryTimestamp(Date.now());
-        }, 30000);
+        }, Number(selectedOption));
         return () => clearInterval(intervalId);
     }, []);
 
 
     useEffect(async () => {
         workloadRefresh()
-
     }, [searchTerm, timeUpdater, queryTimestamp]);
 
     const workloadRefresh = async () => {
-
         const filteredCardList_custom = Object.keys(appsList).filter((metricKey) =>
             metricKey.toLowerCase().includes(searchTerm.toLowerCase())
         ).reduce((obj, key) => {
@@ -95,9 +93,14 @@ const ParentCard = () => {
     }
 
     const handleSearchChange = (event) => {
-        setSearchTerm(event.target.value);
+        setSearchTerm(event);
     };
 
+    const listTitles = () => {
+        return Object.keys(appsList)
+    };
+
+    const appTitles = listTitles();
 
     return (
         <div style={{ maxWidth: "100%" }}>
@@ -105,7 +108,7 @@ const ParentCard = () => {
                 <div>
                     <Row >
                         <Col>
-                            <Searchbar setSearchTerm={setSearchTerm} />
+                            <Searchbar onHandleSearchChange={handleSearchChange} appTitles={appTitles} />
                         </Col>
                         <Col md={{ offset: 5 }} >
                             <TimeDropdown timeCollector={timeCollector} />
@@ -124,6 +127,7 @@ const ParentCard = () => {
                                 metrics={e.metrics}
                                 headingColor={e.workloadValue}
                                 hyperlink={e.workloadUrl}
+                                selectedOption={selectedOption}
                             />
                         )
                     }
