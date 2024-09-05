@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useMemo, useState } from 'react';
 
 import { Col, Row } from 'react-bootstrap';
 import TimeDropdown from '../TimeDropdown/TimedropDown';
@@ -15,7 +15,7 @@ const ParentCard = ({ selectedOption }) => {
 
     const [timeUpdater, setTimeUpdater] = useState('5 Minutes')
     const [searchTerm, setSearchTerm] = useState('');
-    const [filteredCardList_custom_state, setFilteredList_Custom] = useState()
+    const [filteredCardList_custom_state, setFilteredList_Custom] = useState([])
     const [queryTimestamp, setQueryTimestamp] = useState(Date.now());
 
     let list_of_sortedCards;
@@ -30,18 +30,12 @@ const ParentCard = ({ selectedOption }) => {
 
     useEffect(async () => {
         workloadRefresh()
-    }, [searchTerm, timeUpdater, queryTimestamp]);
+    }, [timeUpdater, queryTimestamp]);
 
     const workloadRefresh = async () => {
-        const filteredCardList_custom = Object.keys(appsList).filter((metricKey) =>
-            metricKey.toLowerCase().includes(searchTerm.toLowerCase())
-        ).reduce((obj, key) => {
-            obj[key] = appsList[key];
-            return obj;
-        }, {});
 
         const statusOrder = { "DISRUPTED": 4, "DEGRADED": 3, "UNKNOWN": 2, "OPERATIONAL": 1 };
-        const sorted = await Promise.all(Object.entries(filteredCardList_custom).map(async ([project, metrics]) => {
+        const sorted = await Promise.all(Object.entries(appsList).map(async ([project, metrics]) => {
             const workloadQuery = metrics.metric9.query;
             const workload_account_Id = metrics.metric9.accountId;
             const workloadData = await fetch_NerdGraph_Query_Result(workloadQuery, workload_account_Id);
@@ -96,6 +90,12 @@ const ParentCard = ({ selectedOption }) => {
         setSearchTerm(event);
     };
 
+    const filteredCardList = useMemo(() => {
+        return filteredCardList_custom_state.filter(({ project }) =>
+            project.toLowerCase().includes(searchTerm.toLowerCase())
+        );
+    }, [searchTerm, filteredCardList_custom_state]);
+
     const listTitles = () => {
         return Object.keys(appsList)
     };
@@ -118,7 +118,7 @@ const ParentCard = ({ selectedOption }) => {
                 <div style={{ display: 'grid', gap: '1rem', gridTemplateColumns: 'repeat(auto-fill,minmax(440px,1fr))', justifyContent: 'center' }}>
                     {
 
-                        filteredCardList_custom_state?.map(e =>
+                        filteredCardList?.map(e =>
                             <EMDMH
                                 key={e.project}
                                 cardName={e.project}
@@ -147,4 +147,7 @@ const fetchNerdGraphQuery = async (query) => {
     const response = await NerdGraphQuery.query({ query });
     return response.data;
 };
+
+
+
 

@@ -20,7 +20,6 @@ import Modalbox from "../../Modal/Modalbox";
 const EMDMH = ({
     cardName,
     timeUpdater,
-    guid,
     metrics,
     headingColor,
     hyperlink,
