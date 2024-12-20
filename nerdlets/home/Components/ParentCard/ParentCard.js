@@ -37,11 +37,12 @@ const ParentCard = ({ selectedOption }) => {
         const statusOrder = { "DISRUPTED": 4, "DEGRADED": 3, "UNKNOWN": 2, "OPERATIONAL": 1 };
         const sorted = await Promise.all(Object.entries(appsList).map(async ([project, metrics]) => {
             const workloadQuery = metrics.metric9.query;
+            const infrahealthQuery = metrics.metric1.query;
             const workload_account_Id = metrics.metric9.accountId;
             const workloadData = await fetch_NerdGraph_Query_Result(workloadQuery, workload_account_Id);
             const workloadValue = workloadData?.actor?.account?.nrql?.rawResponse?.results[0]?.latest ?? null;
             const workloadUrl = metrics.metric9.url;
-            return { project, metrics, workloadValue, workloadUrl };
+            return { project, metrics, workloadValue, workloadUrl, infrahealthQuery };
         }));
 
         const sortedCards = sorted.sort((a, b) => {
@@ -123,7 +124,7 @@ const ParentCard = ({ selectedOption }) => {
                                 key={e.project}
                                 cardName={e.project}
                                 timeUpdater={timeUpdater}
-                                guid={'Mjc4MTY2N3xOUjF8V09SS0xPQUR8MjE1MzQw'}
+                                infrahealthQuery={e.infrahealthQuery}
                                 metrics={e.metrics}
                                 headingColor={e.workloadValue}
                                 hyperlink={e.workloadUrl}

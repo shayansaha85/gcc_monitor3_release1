@@ -351,7 +351,7 @@ const EMDMH = ({
                                                     </>
                                                 ) : metricKey === "metric1" ? (
                                                     <span style={{ cursor: "pointer" }}>
-                                                        {metricVal?.current}
+                                                        {metricVal.current}
                                                     </span>
                                                 ) : (
                                                     <OverlayTrigger
